@@ -35,5 +35,10 @@
   <%= simple_format(@character.history) %>
 </p>
 
+<p>
+  Information about <%= @character.name %>'s dragon
+</p>
+  
+
 <%= link_to 'Edit', edit_character_path(@character) %> |
 <%= link_to 'Back', characters_path %>

@@ -6,6 +6,7 @@
       <th>Name</th>
       <th>Age</th>
       <th>Character Type</th>
+      <th>Rank</th>
       <th>Dragon</th>
       <th>Color</th>
       <th></th>
@@ -20,6 +21,7 @@
         <td id="char_data"><%= character.name %></td>
         <td id="char_data"><%= character.age %></td>
         <td id="char_data"><%= character.character_type %></td>
+        <td id="char_data"><%= character.rank %></td>
         <td id="char_data"><%= character.dragon.name if character.dragon %></td>
         <td id="char_data"><%= character.dragon.color if character.dragon %></td>
         <td id="char_option"><%= link_to 'Show', character %></td>
