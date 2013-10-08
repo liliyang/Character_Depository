@@ -69,6 +69,6 @@ class CharactersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def character_params
-      params.require(:character).permit(:name, :age, :description)
+      params.require(:character).permit(:name, :pronunciation, :character_type, :rank, :age, :gender, :location, :description, :personality, :history)
     end
 end

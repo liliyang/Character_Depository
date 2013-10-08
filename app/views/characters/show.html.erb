@@ -3,16 +3,36 @@
 <p>
   <strong>Name:</strong>
   <%= @character.name %>
-</p>
-
-<p>
+  <br>
+  <strong>Name Pronounced:</strong>
+  <%= @character.pronunciation %>
+  <br>
+  <strong>Character Type:</strong>
+  <%= @character.character_type %>
+  <br>
+  <strong>Rank:</strong>
+  <%= @character.rank %>
+  <br>
   <strong>Age:</strong>
   <%= @character.age %>
+  <br>
+  <strong>Gender:</strong>
+  <%= @character.gender %>
 </p>
 
 <p>
-  <strong>Description:</strong>
-  <%= @character.description %>
+  <strong>Appearance:</strong>
+  <%= simple_format(@character.description) %>
+</p>
+
+<p>
+  <strong>Personality:</strong>
+  <%= simple_format(@character.personality) %>
+</p>
+
+<p>
+  <strong>History:</strong>
+  <%= simple_format(@character.history) %>
 </p>
 
 <%= link_to 'Edit', edit_character_path(@character) %> |
