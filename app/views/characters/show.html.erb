@@ -68,10 +68,50 @@
   </p>
   <p>
     <%= link_to 'Edit Dragon', edit_character_dragon_path(@character, @character.dragon) %> |
-    <%= link_to 'Destroy Dragon', character_dragon_path(@character, @character.dragon), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Destroy Dragon', character_dragon_path(@character, @character.dragon), method: :delete, data: { confirm: 'Are you sure?' } %> |
+    <%= link_to 'Back', characters_path %>
   </p>
 <% else %>
   <p>
     <%= link_to 'Add Dragon', new_character_dragon_path(@character) %>
   </p>
 <% end %>
+
+<hr>
+
+<% if @character.pets %>
+  <p>
+    Information about <%= @character.name %>'s pet(s)
+  </p>
+<% end %>
+
+<% @character.pets.each do |pet| %>
+  <p>
+    <strong>Name:</strong>
+    <%= pet.name %>
+    <br>
+    <strong>Type:</strong>
+    <%= pet.pet_type %>
+  </p>
+  
+  <p>
+    <strong>Appearance:</strong>
+    <%= simple_format(pet.description) %>
+  </p>
+
+  <p>
+    <strong>Personality:</strong>
+    <%= simple_format(pet.personality) %>
+  </p>
+  
+  <p>
+    <%= link_to 'Edit Pet', edit_character_pet_path(@character, pet) %> |
+    <%= link_to 'Destroy Pet', character_pet_path(@character, pet), method: :delete, data: { confirm: 'Are you sure?' } %>
+  </p>
+
+<% end %>
+
+<p>
+  <%= link_to 'Add Pet', new_character_pet_path(@character) %> |
+  <%= link_to 'Back', characters_path %>
+</p>

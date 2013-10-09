@@ -1,0 +1,29 @@
+<!--
+<% if @character.pets %>
+  <p>
+    Information about <%= @character.name %>'s pet(s)
+  </p>
+  
+  <p>
+    <strong>Name:</strong>
+    <%= @character.pets.first.name %>
+    <br>
+    <strong>Type:</strong>
+    <%= @character.pets.first.pet_type %>
+  </p>
+  
+  <p>
+    <strong>Appearance:</strong>
+    <%= simple_format(@character.pet.first.description) %>
+  </p>
+
+  <p>
+    <strong>Personality:</strong>
+    <%= simple_format(@character.pets.first.personality) %>
+  </p>
+  <p>
+    <%= link_to 'Edit Pet', edit_character_pet_path(@character, @character.pet.first) %> |
+    <%= link_to 'Destroy Pet', character_pet_path(@character, @character.pet.first), method: :delete, data: { confirm: 'Are you sure?' } %>
+  </p>
+<% end %>
+-->
