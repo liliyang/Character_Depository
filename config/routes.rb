@@ -1,5 +1,7 @@
 HelloWorld::Application.routes.draw do
-  resources :characters
+  resources :characters do
+    resources :dragons
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

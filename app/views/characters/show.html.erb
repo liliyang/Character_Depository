@@ -35,10 +35,43 @@
   <%= simple_format(@character.history) %>
 </p>
 
-<p>
-  Information about <%= @character.name %>'s dragon
-</p>
-  
 
 <%= link_to 'Edit', edit_character_path(@character) %> |
 <%= link_to 'Back', characters_path %>
+
+<hr>
+
+<% if @character.dragon %>
+  <p>
+    Information about <%= @character.name %>'s dragon
+  </p>
+  
+  <p>
+    <strong>Name:</strong>
+    <%= @character.dragon.name %>
+    <br>
+    <strong>Color:</strong>
+    <%= @character.dragon.color %>
+    <br>
+    <strong>Age:</strong>
+    <%= @character.dragon.age %>
+  </p>
+  
+  <p>
+    <strong>Appearance:</strong>
+    <%= simple_format(@character.dragon.description) %>
+  </p>
+
+  <p>
+    <strong>Personality:</strong>
+    <%= simple_format(@character.dragon.personality) %>
+  </p>
+  <p>
+    <%= link_to 'Edit Dragon', edit_character_dragon_path(@character, @character.dragon) %> |
+    <%= link_to 'Destroy Dragon', [@character, @dragon], method: :delete, data: { confirm: 'Are you sure?' } %>
+  </p>
+<% else %>
+  <p>
+    <%= link_to 'Add Dragon', new_character_dragon_path(@character) %>
+  </p>
+<% end %>
