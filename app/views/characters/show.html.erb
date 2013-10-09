@@ -68,7 +68,7 @@
   </p>
   <p>
     <%= link_to 'Edit Dragon', edit_character_dragon_path(@character, @character.dragon) %> |
-    <%= link_to 'Destroy Dragon', [@character, @dragon], method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Destroy Dragon', character_dragon_path(@character, @character.dragon), method: :delete, data: { confirm: 'Are you sure?' } %>
   </p>
 <% else %>
   <p>
