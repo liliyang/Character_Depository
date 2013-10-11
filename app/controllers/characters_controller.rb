@@ -4,7 +4,11 @@ class CharactersController < ApplicationController
   # GET /characters
   # GET /characters.json
   def index
-    @characters = Character.includes(:dragon).all
+    if params[:character_type]
+      @characters = Character.where(character_type: params[:character_type])
+    else
+      @characters = Character.includes(:dragon).all
+    end
   end
 
   # GET /characters/1

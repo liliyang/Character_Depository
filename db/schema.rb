@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131011173921) do
+ActiveRecord::Schema.define(version: 20131011185226) do
 
   create_table "characters", force: true do |t|
     t.string   "name"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20131011173921) do
     t.text     "personality"
     t.text     "history"
     t.date     "birthdate"
-    t.integer  "pets",           default: 0
+    t.integer  "pet_count",      default: 0
     t.boolean  "rider",          default: false
     t.boolean  "candidate",      default: false
     t.boolean  "crafter",        default: false

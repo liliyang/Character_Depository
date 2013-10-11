@@ -1,15 +1,16 @@
 class Character < ActiveRecord::Base
   
-  before_save :check_rider
-  
   has_many :pets
   has_one :dragon, dependent: :destroy, foreign_key: :rider_id
   
-  scope :candidate, where(candidate: true)
+  scope :candidate, where(character_type: 'Candidate')
   
-  def check_rider
-    if dragon
-      self.rider = true
+  def has_dragon?
+    if self.dragon
+      true
+    else
+      false
     end
   end
+  
 end
