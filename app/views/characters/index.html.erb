@@ -4,7 +4,6 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Age</th>
       <th>Character Type</th>
       <th>Rank</th>
       <th>Dragon</th>
@@ -18,13 +17,11 @@
   <tbody>
     <% @characters.each do |character| %>
       <tr>
-        <td id="char_data"><%= character.name %></td>
-        <td id="char_data"><%= character.age %></td>
+        <td id="char_data"><%= link_to character.name, character %></td>
         <td id="char_data"><%= character.character_type %></td>
         <td id="char_data"><%= character.rank %></td>
         <td id="char_data"><%= character.dragon.name if character.dragon %></td>
         <td id="char_data"><%= character.dragon.color if character.dragon %></td>
-        <td id="char_option"><%= link_to 'Show', character %></td>
         <td id="char_option"><%= link_to 'Edit', edit_character_path(character) %></td>
         <td id="char_option"><%= link_to 'Destroy', character, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
