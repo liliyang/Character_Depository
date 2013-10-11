@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131009212310) do
+ActiveRecord::Schema.define(version: 20131011173921) do
 
   create_table "characters", force: true do |t|
     t.string   "name"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20131009212310) do
     t.boolean  "holder",         default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "craft"
   end
 
   create_table "dragons", force: true do |t|

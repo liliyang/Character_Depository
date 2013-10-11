@@ -5,6 +5,7 @@
     <tr>
       <th>Name</th>
       <th>Character Type</th>
+      <th>Craft</th>
       <th>Rank</th>
       <th>Dragon</th>
       <th>Color</th>
@@ -19,6 +20,7 @@
       <tr>
         <td id="char_data"><%= link_to character.name, character %></td>
         <td id="char_data"><%= character.character_type %></td>
+        <td id="char_data"><%= character.craft %></td>
         <td id="char_data"><%= character.rank %></td>
         <td id="char_data"><%= character.dragon.name if character.dragon %></td>
         <td id="char_data"><%= character.dragon.color if character.dragon %></td>

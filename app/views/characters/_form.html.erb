@@ -21,7 +21,11 @@
   </div>
   <div class="field">
     <%= f.label :character_type %><br>
-    <%= f.text_field :character_type %>
+    <%= f.select :character_type, ['Candidate', 'Crafter', 'Dragonrider', 'Holder'] %>
+  </div>
+  <div class="field">
+    <%= f.label :craft %><br>
+    <%= f.select :craft, [nil, 'Artist', 'Baker', 'Beastcraft', 'Chemist', 'Cobbler', 'Dolphineer', 'DragonHealer', 'Farmer', 'Fisher', 'Glasscrafter', 'Harper', 'Healer', 'Miner', 'Runner', 'Seacrafter', 'Smith', 'Tailor', 'Tanner', 'Vinter', 'Weaver', 'Woodcraft', 'Whercraft', 'Other', 'None'] %>
   </div>
   <div class="field">
     <%= f.label :rank %><br>
@@ -38,7 +42,7 @@
   <div class="field">
     <%= f.label :location %><br>
     <%= f.text_field :location %>
-  </div>    
+  </div>
   <div class="field">
     <%= f.label "Appearance" %><br>
     <%= f.text_area :description %>
