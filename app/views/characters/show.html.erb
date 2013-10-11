@@ -36,7 +36,7 @@
 </p>
 
 
-<%= link_to 'Edit Character', edit_character_path(@character) %> |
+<%= link_to 'Edit Character', edit_character_path(@character.name) %> |
 <%= link_to 'Back', characters_path %>
 
 
@@ -68,8 +68,8 @@
     <%= simple_format(@character.dragon.personality) %>
   </p>
   <p>
-    <%= link_to 'Edit Dragon', edit_character_dragon_path(@character, @character.dragon) %> |
-    <%= link_to 'Destroy Dragon', character_dragon_path(@character, @character.dragon), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Edit Dragon', edit_character_dragon_path(@character.name, @character.dragon) %> |
+    <%= link_to 'Destroy Dragon', character_dragon_path(@character.name, @character.dragon), method: :delete, data: { confirm: 'Are you sure?' } %>
   </p>
 <% end %>
 
@@ -102,8 +102,8 @@
   </p>
   
   <p>
-    <%= link_to 'Edit Pet', edit_character_pet_path(@character, pet) %> |
-    <%= link_to 'Destroy Pet', character_pet_path(@character, pet), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Edit Pet', edit_character_pet_path(@character.name, pet) %> |
+    <%= link_to 'Destroy Pet', character_pet_path(@character.name, pet), method: :delete, data: { confirm: 'Are you sure?' } %>
   </p>
   <br>
 
@@ -113,9 +113,9 @@
 
 <p>
   <% unless @character.dragon %>
-    <%= link_to 'Add Dragon', new_character_dragon_path(@character) %> | 
+    <%= link_to 'Add Dragon', new_character_dragon_path(@character.name) %> | 
   <% end %>
   
-  <%= link_to 'Add Pet', new_character_pet_path(@character) %> | 
+  <%= link_to 'Add Pet', new_character_pet_path(@character.name) %> | 
   <%= link_to 'Back', characters_path %>
 </p>

@@ -13,4 +13,8 @@ class Character < ActiveRecord::Base
     end
   end
   
+  def to_param
+    self.name
+  end
+  
 end

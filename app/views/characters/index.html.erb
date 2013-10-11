@@ -24,7 +24,7 @@
         <td id="char_data"><%= character.rank %></td>
         <td id="char_data"><%= character.dragon.name if character.dragon %></td>
         <td id="char_data"><%= character.dragon.color if character.dragon %></td>
-        <td id="char_option"><%= link_to 'Edit', edit_character_path(character) %></td>
+        <td id="char_option"><%= link_to 'Edit', edit_character_path(character.name) %></td>
         <td id="char_option"><%= link_to 'Destroy', character, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
