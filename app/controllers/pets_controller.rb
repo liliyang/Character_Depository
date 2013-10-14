@@ -42,7 +42,7 @@ class PetsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_character
-      @character = Character.find_by_name(params[:character_id])
+      @character = Character.find_by(name: params[:character_id])
     end
 
     def set_pet
