@@ -3,7 +3,7 @@ class Character < ActiveRecord::Base
   has_many :pets
   has_one :dragon, dependent: :destroy, foreign_key: :rider_id
   
-  scope :candidate, where(character_type: 'Candidate')
+  scope :candidate, ->{ where(character_type: 'Candidate') }
   
   def has_dragon?
     if self.dragon
@@ -14,7 +14,7 @@ class Character < ActiveRecord::Base
   end
   
   def to_param
-    self.name
+    "#{self.name}"
   end
   
 end
