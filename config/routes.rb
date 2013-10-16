@@ -5,8 +5,14 @@ HelloWorld::Application.routes.draw do
   end
   
   resources :users
+  resources :sessions, only: [:new, :create, :destroy]
   
-  match 'character_groups/:character_type' => 'characters#index', :as => 'character_type', via: [:get, :post]
+  match 'character_groups/:character_type' => 'characters#index', :as => 'character_type', via: :get
+  
+  match 'signup' => 'users#new', via: :get
+  match 'signin' => 'sessions#new', via: :get
+  match 'signout' => 'sessions#destroy', via: :delete
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
