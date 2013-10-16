@@ -4,6 +4,8 @@ HelloWorld::Application.routes.draw do
     resources :pets
   end
   
+  resources :users
+  
   match 'character_groups/:character_type' => 'characters#index', :as => 'character_type', via: [:get, :post]
 
   # The priority is based upon order of creation: first created -> highest priority.
