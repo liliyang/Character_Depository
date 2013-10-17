@@ -22,3 +22,40 @@
     <%= link_to "Sign In", signin_path %>
   </p>
 <% end %>
+
+<h1>Listing <%= @user.username %>'s characters</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Character Type</th>
+      <th>Craft</th>
+      <th>Rank</th>
+      <th>Dragon</th>
+      <th>Color</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @characters.each do |character| %>
+      <tr>
+        <td id="char_data"><%= link_to character.name, character %></td>
+        <td id="char_data"><%= character.character_type %></td>
+        <td id="char_data"><%= character.craft %></td>
+        <td id="char_data"><%= character.rank %></td>
+        <td id="char_data"><%= character.dragon.name if character.dragon %></td>
+        <td id="char_data"><%= character.dragon.color if character.dragon %></td>
+        <td id="char_option"><%= link_to 'Edit', edit_character_path(character.name) %></td>
+        <td id="char_option"><%= link_to 'Destroy', character, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Character', new_character_path %>

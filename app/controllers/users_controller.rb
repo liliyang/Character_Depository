@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :signed_in_user, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /users
   def index
@@ -8,6 +10,7 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
+    @characters = @user.characters
   end
 
   # GET /users/new
@@ -55,4 +58,15 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :username, :email, :password, :password_confirmation)
     end
+    
+    # Check for signed in user
+    def signed_in_user
+      redirect_to signin_url, alert: "Please sign in." unless signed_in?
+    end
+    
+    # Check for authorized user
+    def correct_user
+      redirect_to users_url, alert: "You cannot change someone else's account!" unless is_current_user?(@user)
+    end
+    
 end
