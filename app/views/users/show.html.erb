@@ -11,3 +11,14 @@
   <%= @user.email %>
   
 </p>
+
+<% if is_current_user?(@user) %>
+  <p> <%= current_user.username %> </p>
+  <p>
+    <%= link_to "Sign Out", signout_path, method: "delete" %>
+  </p>
+<% else %>
+  <p>
+    <%= link_to "Sign In", signin_path %>
+  </p>
+<% end %>

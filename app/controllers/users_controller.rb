@@ -23,6 +23,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      sign_in @user
       redirect_to @user, notice: 'User was successfully created.'
     else
       render action: 'new'
@@ -32,7 +33,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: 'Character was successfully updated.'
+      redirect_to @user, notice: 'User was successfully updated.'
     else
       render action: 'edit'
     end
