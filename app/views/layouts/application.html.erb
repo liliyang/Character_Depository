@@ -24,7 +24,11 @@
   
 </div>
 
-<div class="side_menu">
+<table>
+  <tbody>
+    <tr>
+      <td class="side_menu">
+        <div>
   <p>
     <%= link_to "All Characters", characters_path %>
   </p>
@@ -47,9 +51,13 @@
     <%= link_to "Recently Updated", characters_path %>
   </p>
 </div>
-  
-
-<%= yield %>
+      </td>
+      <td class="stuff">
+        <%= yield %>
+      </td>
+    </tr>
+  <tbody>
+</table>
 
 </body>
 </html>
