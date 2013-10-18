@@ -1,12 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>HelloWorld</title>
+  <title>My Big Character Collection</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<div class="headline">
+  <h1>Welcome to My Character Collection!</h1>
+</div>
+
+<div class="top_menu">
+  | <%= link_to "View All Users", users_path %> |
+  <% if signed_in? %>
+    <%= link_to "View My Characters", user_path(current_user) %> |
+    <%= link_to "Sign Out", signout_path, method: "delete" %> |
+  <% else %>
+    <%= link_to "Sign In", signin_path %> |
+    <%= link_to "Sign Up For a New Account", new_user_path %> |
+  <% end %> 
+  
+</div>
+
+<div class="side_menu">
+  <p>
+    <%= link_to "All Characters", characters_path %>
+  </p>
+  <p>
+    <%= link_to "Candidates", characters_path %>
+  </p>
+  <p>
+    <%= link_to "Crafters", characters_path %>
+  </p>
+  <p>
+    <%= link_to "Dragonriders", characters_path %>
+  </p>
+  <p>
+    <%= link_to "Holders", characters_path %>
+  </p>
+  <p>
+    <%= link_to "New Characters", characters_path %>
+  </p>
+  <p>
+    <%= link_to "Recently Updated", characters_path %>
+  </p>
+</div>
+  
 
 <%= yield %>
 
