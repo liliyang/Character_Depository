@@ -12,6 +12,10 @@
  *= require_tree .
  */
 
+html {
+  height: 100%;
+}
+
 body {
   background-color: #E2E9E1;
   color: #333;
@@ -21,6 +25,7 @@ body {
   margin: 0px;
   padding: 0px;
   text-align: left;
+  height: 100%;
 }
 
 h2 {
@@ -94,6 +99,11 @@ hr {
   
 }
 
+#general_layout {
+  height: 100%;
+    
+}
+
 .side_menu {
   text-align: center;
   background-color: #C5E4C1;
@@ -105,6 +115,7 @@ hr {
 .stuff {
   width: 75%;
   padding: 15px;
+  vertical-align: top;
 }
 
 #notice {
