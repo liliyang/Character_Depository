@@ -20,15 +20,21 @@ body {
   line-height: 18px;
   margin: 0px;
   padding: 0px;
+  text-align: left;
+}
+
+h2 {
+  text-align: center;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #333;
+  font-size: 18px;
+  line-height: 24px;
 }
 
 table {
   border-collapse: collapse;
   width: 100%;
-}
-
-td {
-  vertical-align: top;
 }
 
 pre {
@@ -46,6 +52,16 @@ a {
     color: #fff;
     background-color: #000;
   }
+}
+
+hr {
+  border-top: 4px double #3F4D4D;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+  width: 500px;
+  height: 5px;
+  text-align: center;
 }
 
 .headline {
@@ -83,6 +99,7 @@ a {
   background-color: #C5E4C1;
   width: 20%;
   padding-top: 20px;
+  vertical-align: top;
 }
 
 .stuff {
@@ -131,5 +148,17 @@ div {
     font-size: 12px;
     list-style: square;
   }
+}
+
+//Form Styling - Revisit later!
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 25%;
+  margin-bottom:15px;
+}
+
+input {
+  height: auto !important;
 }
 

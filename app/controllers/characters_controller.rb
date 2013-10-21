@@ -6,6 +6,7 @@ class CharactersController < ApplicationController
   def index
     if params[:character_type]
       @characters = Character.where(character_type: params[:character_type])
+      @char_type = params[:character_type]
     else
       @characters = Character.all
     end

@@ -1,61 +1,63 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-  <br>
-  <strong>Username:</strong>
-  <%= @user.username %>
-  <br>
-  <strong>Email:</strong>
-  <%= @user.email %>
-  
-</p>
+<h2><%= @user.username %></h2>
 
-<% if is_current_user?(@user) %>
-  <p> <%= current_user.username %> </p>
+<div id="user_data">
   <p>
-    <%= link_to "Sign Out", signout_path, method: "delete" %>
+    <strong>Name:</strong>
+    <%= @user.name %>
+    <br>
+    <strong>Email:</strong>
+    <%= @user.email %>
+    <br>
+    <strong>Character(s):</strong>
+    <%= @characters.count %>  
   </p>
-<% else %>
-  <p>
-    <%= link_to "Sign In", signin_path %>
-  </p>
-<% end %>
+</div>
 
-<h1>Listing <%= @user.username %>'s characters</h1>
+<div class="button_wrapper">
+  <button> Show Characters </button>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Character Type</th>
-      <th>Craft</th>
-      <th>Rank</th>
-      <th>Dragon</th>
-      <th>Color</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<div class="character_list">
 
-  <tbody>
-    <% @characters.each do |character| %>
+  <div class="button_wrapper">
+    <button> Hide Characters </button>
+  </div>
+  <h2>Listing <%= @user.username %>'s Characters</h2>
+
+  <hr><br>
+
+  <table class="char_table">
+    <thead>
       <tr>
-        <td id="char_data"><%= link_to character.name, character %></td>
-        <td id="char_data"><%= character.character_type %></td>
-        <td id="char_data"><%= character.craft %></td>
-        <td id="char_data"><%= character.rank %></td>
-        <td id="char_data"><%= character.dragon.name if character.dragon %></td>
-        <td id="char_data"><%= character.dragon.color if character.dragon %></td>
-        <td id="char_option"><%= link_to 'Edit', edit_character_path(character.name) %></td>
-        <td id="char_option"><%= link_to 'Destroy', character, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Name</th>
+        <th>Character Type</th>
+        <th>Craft</th>
+        <th>Rank</th>
+        <th>Dragon</th>
+        <th>Color</th>
+        <th></th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @characters.each do |character| %>
+        <tr>
+          <td id="char_data"><%= link_to character.name, character %></td>
+          <td id="char_data"><%= character.character_type %></td>
+          <td id="char_data"><%= character.craft %></td>
+          <td id="char_data"><%= character.rank %></td>
+          <td id="char_data"><%= character.dragon.name if character.dragon %></td>
+          <td id="char_data"><%= character.dragon.color if character.dragon %></td>
+          <td id="char_option"><%= link_to 'Edit', edit_character_path(character.name) %></td>
+          <td id="char_option"><%= link_to 'Delete', character, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Character', new_character_path %>
+<div>
+
+<br><hr>

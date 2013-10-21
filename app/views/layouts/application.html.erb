@@ -15,7 +15,8 @@
 <div class="top_menu">
   | <%= link_to "View All Users", users_path %> |
   <% if signed_in? %>
-    <%= link_to "View My Characters", user_path(current_user) %> |
+    <%= link_to "View My Characters", user_path(current_user.username) %> |
+    <%= link_to "Create a New Character", new_character_path %> |
     <%= link_to "Sign Out", signout_path, method: "delete" %> |
   <% else %>
     <%= link_to "Sign In", signin_path %> |
