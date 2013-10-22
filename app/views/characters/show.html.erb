@@ -1,9 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<h2>
   <%= @character.name %>
-  <br>
+</h2>
+
+<p>
+  <center>
+    <strong>User:</strong>
+    <%= link_to @character.user.username, user_path(@character.user.username) %>
+  </center>
   <strong>Name Pronounced:</strong>
   <%= @character.pronunciation %>
   <br>
@@ -36,20 +41,21 @@
 </p>
 
 
-<%= link_to 'Edit Character', edit_character_path(@character.name) %> |
-<%= link_to 'Back', characters_path %>
+
 
 
 
 <% if @character.dragon %>
   <hr>
   <p>
-    Information about <%= @character.name %>'s dragon
+    Information about <%= @character.name %>'s dragon:
   </p>
   
   <p>
     <strong>Name:</strong>
-    <%= @character.dragon.name %>
+    <%= @character.dragon.name %> (
+    <%= link_to 'Edit', edit_character_dragon_path(@character.name, @character.dragon) %> |
+    <%= link_to 'Delete', character_dragon_path(@character.name, @character.dragon), method: :delete, data: { confirm: 'Are you sure?' } %> )
     <br>
     <strong>Color:</strong>
     <%= @character.dragon.color %>
@@ -67,17 +73,13 @@
     <strong>Personality:</strong>
     <%= simple_format(@character.dragon.personality) %>
   </p>
-  <p>
-    <%= link_to 'Edit Dragon', edit_character_dragon_path(@character.name, @character.dragon) %> |
-    <%= link_to 'Destroy Dragon', character_dragon_path(@character.name, @character.dragon), method: :delete, data: { confirm: 'Are you sure?' } %>
-  </p>
 <% end %>
 
 
 <% if @character.pets.count > 0 %>
   <hr>
   <p>
-    Information about <%= @character.name %>'s pet(s)
+    Information about <%= @character.name %>'s <%= pluralize(@character.pets.count, "pet")%>:
   </p>
 <% end %>
 
@@ -85,7 +87,9 @@
 
   <p>
     <strong>Name:</strong>
-    <%= pet.name %>
+    <%= pet.name %> ( 
+    <%= link_to 'Edit', edit_character_pet_path(@character.name, pet) %> |
+    <%= link_to 'Delete', character_pet_path(@character.name, pet), method: :delete, data: { confirm: 'Are you sure?' } %> )
     <br>
     <strong>Type:</strong>
     <%= pet.pet_type %>
@@ -100,22 +104,17 @@
     <strong>Personality:</strong>
     <%= simple_format(pet.personality) %>
   </p>
-  
-  <p>
-    <%= link_to 'Edit Pet', edit_character_pet_path(@character.name, pet) %> |
-    <%= link_to 'Destroy Pet', character_pet_path(@character.name, pet), method: :delete, data: { confirm: 'Are you sure?' } %>
-  </p>
-  <br>
 
 <% end %>
 
-<hr><hr>
+<hr>
 
 <p>
+  |<%= link_to 'Edit Character', edit_character_path(@character.name) %> |
   <% unless @character.dragon %>
     <%= link_to 'Add Dragon', new_character_dragon_path(@character.name) %> | 
   <% end %>
   
   <%= link_to 'Add Pet', new_character_pet_path(@character.name) %> | 
-  <%= link_to 'Back', characters_path %>
+  <%= link_to 'Back to All Characters', characters_path %> |
 </p>
