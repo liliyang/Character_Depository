@@ -59,6 +59,17 @@ a {
   }
 }
 
+input, textarea, select {
+  border: 1px solid #bbb;
+  width: 25%;
+  margin-bottom:15px;
+}
+
+textarea {
+  width: 50%;
+  height: 200px;
+}
+
 hr {
   border-top: 4px double #3F4D4D;
   border-left: 0;
@@ -121,23 +132,22 @@ hr {
 }
 
 #notice {
-  color: green;
+  color: #255816;
 }
 
 #alert {
   color: red;
 }
 
-div {
-  &.field, &.actions {
-    margin-bottom: 10px;
-  }
-}
-
 .field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
+  width: 100%;
+  label {
+    font-weight: bold;
+    color: red;
+  }
+  input {
+    border-color: red;
+  }
 }
 
 #error_explanation {
@@ -145,8 +155,8 @@ div {
   border: 2px solid red;
   padding: 7px;
   padding-bottom: 0;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
+  margin-left: auto;
+  margin-right: auto;
   h2 {
     text-align: left;
     font-weight: bold;
@@ -155,7 +165,8 @@ div {
     margin: -7px;
     margin-bottom: 0px;
     background-color: #c00;
-    color: #fff;
+    color: #E2E9E1;
+    border: 0;
   }
   ul li {
     font-size: 12px;
@@ -163,15 +174,4 @@ div {
   }
 }
 
-//Form Styling - Revisit later!
-
-input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  width: 25%;
-  margin-bottom:15px;
-}
-
-input {
-  height: auto !important;
-}
 
