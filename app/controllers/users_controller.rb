@@ -15,7 +15,11 @@ class UsersController < ApplicationController
   def show
     @characters = @user.characters
     respond_to do |format|
-      format.html
+      format.html do
+        if @user == current_user
+          render :mypage
+        end
+      end
       format.js
     end
   end

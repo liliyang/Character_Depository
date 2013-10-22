@@ -109,12 +109,14 @@
 
 <hr>
 
-<p>
-  |<%= link_to 'Edit Character', edit_character_path(@character.name) %> |
-  <% unless @character.dragon %>
-    <%= link_to 'Add Dragon', new_character_dragon_path(@character.name) %> | 
-  <% end %>
+<center>
+  <p>
+    |<%= link_to 'Edit Character', edit_character_path(@character.name) %> |
+    <% unless @character.dragon %>
+      <%= link_to 'Add Dragon', new_character_dragon_path(@character.name) %> | 
+    <% end %>
   
-  <%= link_to 'Add Pet', new_character_pet_path(@character.name) %> | 
-  <%= link_to 'Back to All Characters', characters_path %> |
-</p>
+    <%= link_to 'Add Pet', new_character_pet_path(@character.name) %> | 
+    <%= link_to 'Back to All Characters', characters_path %> |
+  </p>
+</center>
