@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @characters = @user.characters
     respond_to do |format|
       format.html do
-        if @user == current_user
+        if is_current_user?(@user)
           render :mypage
         end
       end

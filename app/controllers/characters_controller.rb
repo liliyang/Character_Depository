@@ -70,6 +70,15 @@ class CharactersController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def new_created
+    @characters = Character.recent
+    
+  end
+  
+  def new_updated
+    @characters = Character.updated
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

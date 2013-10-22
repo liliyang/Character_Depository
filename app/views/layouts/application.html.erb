@@ -35,22 +35,22 @@
             <%= link_to "All Characters", characters_path %>
           </p>
           <p>
-            <%= link_to "Candidates", characters_path %>
+            <%= link_to "Candidates", character_type_path("Candidate") %>
           </p>
           <p>
-            <%= link_to "Crafters", characters_path %>
+            <%= link_to "Crafters", character_type_path("Crafter") %>
           </p>
           <p>
-            <%= link_to "Dragonriders", characters_path %>
+            <%= link_to "Dragonriders", character_type_path("Dragonrider") %>
           </p>
           <p>
-            <%= link_to "Holders", characters_path %>
+            <%= link_to "Holders", character_type_path("Holder") %>
           </p>
           <p>
-            <%= link_to "New Characters", characters_path %>
+            <%= link_to "New Characters", recent_characters_path %>
           </p>
           <p>
-            <%= link_to "Recently Updated", characters_path %>
+            <%= link_to "Recently Updated", updated_characters_path %>
           </p>
         </div>
       </td>

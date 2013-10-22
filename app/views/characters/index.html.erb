@@ -3,33 +3,4 @@
 <p> Below is a list of all the <%= params[:character_type] ? params[:character_type].downcase : "characters" %> in alphabetical order. </p>
 <hr><br>
 
-<table class="char_table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Character Type</th>
-      <th>Craft</th>
-      <th>Rank</th>
-      <th>Dragon</th>
-      <th>Color</th>
-      <th>Owner</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @characters.each do |character| %>
-      <tr>
-        <td class="char_data"><%= link_to character.name, character %></td>
-        <td class="char_data"><%= character.character_type %></td>
-        <td class="char_data"><%= character.craft %></td>
-        <td class="char_data"><%= character.rank %></td>
-        <td class="char_data"><%= character.dragon.name if character.dragon %></td>
-        <td class="char_data"><%= character.dragon.color if character.dragon %></td>
-        <td class="char_data"><%= link_to character.user.username, user_path(character.user.username) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-<hr>
+<%= render "list" %>
