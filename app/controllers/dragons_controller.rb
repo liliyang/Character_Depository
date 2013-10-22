@@ -1,6 +1,11 @@
 class DragonsController < ApplicationController
+  
+  include CheckUser
+  
   before_action :set_character
   before_action :set_dragon, only: [:edit, :update, :destroy]
+  before_action :signed_in_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :correct_user, only: [:new, :create, :edit, :update, :destroy]
   
   # GET /characters/1/dragon/new
   def new

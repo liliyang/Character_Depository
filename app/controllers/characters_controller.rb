@@ -1,5 +1,10 @@
 class CharactersController < ApplicationController
+  
+  include CheckUser
+  
   before_action :set_character, only: [:show, :edit, :update, :destroy]
+  before_action :signed_in_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /characters
   # GET /characters.json
@@ -30,7 +35,7 @@ class CharactersController < ApplicationController
   # POST /characters.json
   def create
     @character = Character.new(character_params)
-
+    @character.user_id = current_user.id
     respond_to do |format|
       if @character.save
         format.html { redirect_to @character, notice: 'Character was successfully created.' }
@@ -76,4 +81,5 @@ class CharactersController < ApplicationController
     def character_params
       params.require(:character).permit(:name, :pronunciation, :character_type, :craft, :rank, :age, :gender, :location, :description, :personality, :history)
     end
+    
 end
