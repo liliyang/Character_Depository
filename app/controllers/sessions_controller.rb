@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
   # DELETE /signout
   def destroy
     sign_out
-    redirect_to users_url
+    redirect_to characters_url
   end
   
 end

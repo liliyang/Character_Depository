@@ -2,18 +2,19 @@ class CharactersController < ApplicationController
   
   include CheckUser
   
-  before_action :set_character, only: [:show, :edit, :update, :destroy]
-  before_action :signed_in_user, only: [:new, :create, :edit, :update, :destroy]
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :set_character, only: [:show, :edit, :update, :destroy, :set_status, :approve_character]
+  before_action :signed_in_user, only: [:new, :create, :edit, :update, :destroy, :set_status]
+  before_action :correct_user, only: [:edit, :update, :destroy, :set_status]
+  before_action :admin_user, only: [:approve_character]
 
   # GET /characters
   # GET /characters.json
   def index
     if params[:character_type]
-      @characters = Character.where(character_type: params[:character_type])
+      @characters = Character.display.where(character_type: params[:character_type])
       @char_type = params[:character_type]
     else
-      @characters = Character.all
+      @characters = Character.display
     end
   end
 
@@ -78,6 +79,24 @@ class CharactersController < ApplicationController
   
   def new_updated
     @characters = Character.updated
+  end
+  
+  def set_status
+    @character.active = !@character.active
+    if @character.save
+      redirect_to user_path(current_user)
+    else
+      redirect_to user_path(current_user), alert: "Error! Action failed!"
+    end
+  end
+  
+  def approve_character
+    @character.approved = true
+    if @character.save
+      redirect_to users_path
+    else
+      redirect_to users_path, alert: "Error! Failed to Approve!"
+    end
   end
 
   private

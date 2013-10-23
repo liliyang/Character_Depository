@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131017150839) do
+ActiveRecord::Schema.define(version: 20131023201443) do
 
   create_table "characters", force: true do |t|
     t.string   "name"
@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 20131017150839) do
     t.datetime "updated_at"
     t.string   "craft"
     t.integer  "user_id"
+    t.boolean  "approved",       default: false
+    t.boolean  "active",         default: true
   end
 
   add_index "characters", ["user_id"], name: "index_characters_on_user_id"
@@ -71,6 +73,7 @@ ActiveRecord::Schema.define(version: 20131017150839) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "remember_token"
+    t.boolean  "admin",           default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

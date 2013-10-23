@@ -12,9 +12,11 @@
   <h1>Welcome to My Character Collection!</h1>
 </div>
 
-<div class="top_menu">
-  | <%= link_to "View All Users", users_path %> |
+<div class="top_menu"> |
   <% if signed_in? %>
+    <% if is_admin? %>
+      <%= link_to "Admin Area", users_path %> |
+    <% end %>
     <%= link_to "View My Characters", user_path(current_user.username) %> |
     <%= link_to "Create a New Character", new_character_path %> |
     <%= link_to "Account Settings", edit_user_path(current_user.username) %> |

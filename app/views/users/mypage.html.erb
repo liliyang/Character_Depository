@@ -32,7 +32,7 @@
         <th>Dragon</th>
         <th>Color</th>
         <th>Status</th>
-        <th>Active?</th>
+        <th>Active</th>
         <th>Delete</th>
       </tr>
     </thead>
@@ -47,8 +47,14 @@
           <td id="char_data"><%= character.rank %></td>
           <td id="char_data"><%= character.dragon.name if character.dragon %></td>
           <td id="char_data"><%= character.dragon.color if character.dragon %></td>
-          <td></td>
-          <td></td>
+          <td id="char_data">
+            <% if character.active %>
+              <%= character.approved ? "Approved" : "Approval Pending" %>
+            <% else %>
+              <%= "Inactive" %>
+            <% end %>
+          </td>
+          <td id="char_option"><%= link_to character.active ? "Set Inactive" : "Reactivate", set_status_path(character.name) %></td>
           <td id="char_option"><%= link_to 'Delete', character, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>

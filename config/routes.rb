@@ -10,7 +10,8 @@ HelloWorld::Application.routes.draw do
   match 'character_groups/:character_type' => 'characters#index', :as => 'character_type', via: :get
   match 'recent_characters' => 'characters#new_created', :as => 'recent_characters', via: :get
   match 'updated_characters' => 'characters#new_updated', :as => 'updated_characters', via: :get
-  
+  match 'set_status/:id' => 'characters#set_status', :as => 'set_status', via: [:get, :put]
+  match 'approve_character/:id' => 'characters#approve_character', :as => 'approve_character', via: [:get, :put]
   
   match 'signup' => 'users#new', via: :get
   match 'signin' => 'sessions#new', via: :get

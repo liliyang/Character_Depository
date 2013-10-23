@@ -8,7 +8,12 @@ module CheckUser
   # Check for authorized user
   def correct_user
     @user ||= @character.user
-    redirect_to user_path(current_user), alert: "That does not belong to you!" unless is_current_user?(@user)
+    redirect_to user_path(current_user), alert: "That does not belong to you!" unless is_current_user?(@user) || is_admin?
+  end
+  
+  # Check for admin
+  def admin_user
+    redirect_to user_path(current_user), alert: "You do not have permission to access that page!" unless is_admin?
   end
   
 end
