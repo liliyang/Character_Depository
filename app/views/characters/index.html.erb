@@ -1,4 +1,4 @@
-<h2>The <%= params[:character_type] ? params[:character_type] : "Characters" %> List</h1>
+<% title(params[:character_type] ? "#{params[:character_type]} List" : "Characters List") %>
 
 <p> Below is a list of all the <%= params[:character_type] ? params[:character_type].downcase : "characters" %> in alphabetical order. </p>
 <hr>

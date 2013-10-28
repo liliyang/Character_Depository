@@ -1,6 +1,4 @@
-<p id="alert"><%= alert %></p>
-
-<h2>Users</h2>
+<% title "Users" %>
 
 <table>
   <thead>
@@ -20,7 +18,7 @@
         <td><%= user.name %></td>
         <td><%= user.username %></td>
         <td><%= user.email %></td>
-        <td><%= user.created_at %></td>
+        <td><%= user.created_at.strftime("%b %d, %Y") %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -63,7 +61,7 @@
           <td id="char_data"><%= character.rank %></td>
           <td id="char_data"><%= character.dragon.name if character.dragon %></td>
           <td id="char_data"><%= character.dragon.color if character.dragon %></td>
-          <td id="char_data"><%= character.updated_at %></td>
+          <td id="char_data"><%= character.updated_at.strftime("%b %d, %Y %I:%M %p") %></td>
           <td id="char_option"><%= link_to "Approve", approve_character_path(character.name) %></td>
           <td id="char_option"><%= link_to 'Delete', character, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>

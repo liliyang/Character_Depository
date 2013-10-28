@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My Big Character Collection</title>
+  <title>My Character Collection - <%= yield(:title) || "Welcome"  %></title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -57,6 +57,11 @@
         </div>
       </td>
       <td class="stuff">
+        <p id="alert"><%= alert %></p>
+        <p id="notice"><%= notice %></p>
+        
+        <h2><%= yield :title %></h2>
+        
         <%= yield %>
       </td>
     </tr>
