@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   # GET /users
   def index
     @users = User.all
-    @characters = Character.where(approved: false).order("updated_at ASC")
+    @characters = Character.where(approved: false).order("updated_at ASC").includes(:dragon)
   end
 
   # GET /users/1

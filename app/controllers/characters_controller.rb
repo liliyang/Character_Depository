@@ -11,10 +11,10 @@ class CharactersController < ApplicationController
   # GET /characters.json
   def index
     if params[:character_type]
-      @characters = Character.display.where(character_type: params[:character_type])
+      @characters = Character.display.where(character_type: params[:character_type]).includes(:dragon)
       @char_type = params[:character_type]
     else
-      @characters = Character.display
+      @characters = Character.display.includes(:dragon)
     end
   end
 
