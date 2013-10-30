@@ -1,7 +1,7 @@
 module SearchesHelper
   
   def search(search)
-    search_character_name(search)
+    (search_character_name(search) + search_pet_name(search) + search_dragon_name(search)).uniq
   end
   
   def search_character_name(search)
@@ -9,11 +9,11 @@ module SearchesHelper
   end
   
   def search_pet_name(search)
-    Character.joins(:pets).where("pets.name" => search)
+    Character.joins(:pets).where("pets.name LIKE ?", "%#{search}%")
   end
   
   def search_dragon_name(search)
-    Dragon.where("name LIKE ?", "%#{search}%")
+    Character.joins(:dragon).where("dragons.name LIKE ?", "%#{search}%")
   end
   
   
