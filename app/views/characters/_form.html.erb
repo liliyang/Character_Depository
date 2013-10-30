@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :craft %><br>
-    <%= f.select :craft, [nil, 'Artist', 'Baker', 'Beastcraft', 'Chemist', 'Cobbler', 'Dolphineer', 'DragonHealer', 'Farmer', 'Fisher', 'Glasscrafter', 'Harper', 'Healer', 'Miner', 'Runner', 'Seacrafter', 'Smith', 'Tailor', 'Tanner', 'Vinter', 'Weaver', 'Woodcraft', 'Whercraft', 'Other'] %>
+    <%= f.select :craft, ['Artist', 'Baker', 'Beastcraft', 'Chemist', 'Cobbler', 'Dolphineer', 'DragonHealer', 'Farmer', 'Fisher', 'Glasscrafter', 'Harper', 'Healer', 'Miner', 'Runner', 'Seacrafter', 'Smith', 'Tailor', 'Tanner', 'Vinter', 'Weaver', 'Woodcraft', 'Whercraft', 'Other'], include_blank: true %>
   </div>
   <div class="field">
     <%= f.label :rank %><br>
