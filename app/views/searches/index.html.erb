@@ -1,0 +1,19 @@
+<% title "Character Search" %>
+
+<p>
+Enter a character, dragon, or pet name in the box below. If you cannot remember the whole name then don't worry, just put in part of the name and all results will be displayed. Alternatively, leave the box blank and press submit to receive a full list of characters.  
+</p>
+
+<%= form_tag searches_path, method: :get do %>
+  <p>
+    <%= text_field_tag :search %>
+    <%= submit_tag "Search", name: nil %>
+  </p>
+<% end %>
+
+
+<h2>Search Results</h2>
+
+<% if params[:search] %>
+  <%= render "list" %>
+<% end %>

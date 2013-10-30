@@ -6,6 +6,7 @@ HelloWorld::Application.routes.draw do
   
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :searches
   
   match 'character_groups/:character_type' => 'characters#index', :as => 'character_type', via: :get
   match 'recent_characters' => 'characters#new_created', :as => 'recent_characters', via: :get
