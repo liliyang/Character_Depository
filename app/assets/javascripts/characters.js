@@ -5,7 +5,7 @@ function show_character_form() {
     event.preventDefault();
     $(".hidden_character_form").show();
     $("#preview_character").hide()
-    $(this).hide()
+    
   });
 }
 
