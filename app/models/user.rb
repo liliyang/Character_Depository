@@ -10,7 +10,8 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   
   has_secure_password
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 }, :if => :should_validate_password?
+  attr_accessor :updating_password
   
   def User.new_remember_token
     SecureRandom.urlsafe_base64
@@ -22,6 +23,10 @@ class User < ActiveRecord::Base
   
   def to_param
     "#{self.username}"
+  end
+  
+  def should_validate_password?
+    updating_password || new_record?
   end
   
   private

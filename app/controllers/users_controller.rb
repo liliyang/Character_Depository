@@ -2,9 +2,9 @@ class UsersController < ApplicationController
   
   include CheckUser
   
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :signed_in_user, only: [:index, :show, :edit, :update, :destroy]
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :set_password]
+  before_action :signed_in_user, only: [:index, :show, :edit, :update, :destroy, :set_password]
+  before_action :correct_user, only: [:edit, :update, :destroy, :set_password]
   before_action :admin_user, only: [:index]
 
   # GET /users
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: 'User was successfully updated.'
+      redirect_to @user, notice: "User was successfully updated."
     else
       render action: 'edit'
     end
@@ -59,6 +59,11 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     redirect_to users_url
+  end
+  
+  def set_password
+    @user.updating_password = true
+    @user.save
   end
 
   private

@@ -18,6 +18,8 @@ HelloWorld::Application.routes.draw do
   match 'signin' => 'sessions#new', via: :get
   match 'signout' => 'sessions#destroy', via: :delete
   
+  match 'set_password/:id' => 'users#set_password', :as => 'set_password', via: [:get, :put]
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
