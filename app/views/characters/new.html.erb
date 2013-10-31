@@ -1,5 +1,29 @@
 <%= title "New Character" %>
 
-<%= render 'form' %>
+<% if params[:preview_button]%>
+
+<div id="preview_character">
+<%= render 'character' %>
+</div>
+
+<button id="show_form">
+  Continue Editing?
+</button>
+
+<% end %>
+
+<%= form_for(@character) do |f| %>
+  <% if params[:preview_button] %>
+    <div class='hidden_character_form'> 
+      <%= render :partial => 'form', :locals => {:f => f} %>
+    </div>
+  <% else %>
+    <%= render :partial => 'form', :locals => {:f => f} %>
+  <% end %>
+  <div class="actions">
+    <%= f.submit %>
+    <span class='hidden_character_form'><%= f.submit "Preview", name: "preview_button" %></span>
+  </div>
+<% end %>
 
 <%= link_to 'Back', characters_path %>

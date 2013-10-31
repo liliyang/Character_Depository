@@ -1,46 +1,7 @@
 
 <%= title @character.name %>
 
-<p>
-  <center>
-    <strong>User:</strong>
-    <%= link_to @character.user.username, user_path(@character.user.username) %>
-  </center>
-  <strong>Name Pronounced:</strong>
-  <%= @character.pronunciation %>
-  <br>
-  <strong>Character Type:</strong>
-  <%= @character.character_type %>
-  <br>
-  <strong>Rank:</strong>
-  <%= @character.rank %>
-  <br>
-  <strong>Age:</strong>
-  <%= @character.age %>
-  <br>
-  <strong>Gender:</strong>
-  <%= @character.gender %>
-</p>
-
-<p>
-  <strong>Appearance:</strong>
-  <%= simple_format(@character.description) %>
-</p>
-
-<p>
-  <strong>Personality:</strong>
-  <%= simple_format(@character.personality) %>
-</p>
-
-<p>
-  <strong>History:</strong>
-  <%= simple_format(@character.history) %>
-</p>
-
-
-
-
-
+<%= render 'character'%>
 
 <% if @character.dragon %>
   <hr>

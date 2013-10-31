@@ -37,12 +37,12 @@ class CharactersController < ApplicationController
     @character = Character.new(character_params)
     @character.user_id = current_user.id
     respond_to do |format|
-      if @character.save
-        format.html { redirect_to @character, notice: 'Character was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @character }
-      else
+      if params[:preview_button] || !@character.save
         format.html { render action: 'new' }
         format.json { render json: @character.errors, status: :unprocessable_entity }
+      else
+        format.html { redirect_to @character, notice: 'Character was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @character }
       end
     end
   end
