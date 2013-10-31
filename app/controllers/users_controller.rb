@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   before_action :signed_in_user, only: [:index, :show, :edit, :update, :destroy, :set_password]
   before_action :correct_user, only: [:edit, :update, :destroy, :set_password]
   before_action :admin_user, only: [:index]
+  before_action :check_update_password, only: [:update]
 
   # GET /users
   def index
@@ -51,7 +52,11 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to @user, notice: "User was successfully updated."
     else
-      render action: 'edit'
+      if @user.updating_password
+        render action: 'set_password'
+      else
+        render action: 'edit'
+      end
     end
   end
 
@@ -62,8 +67,10 @@ class UsersController < ApplicationController
   end
   
   def set_password
-    @user.updating_password = true
-    @user.save
+    unless session[:authenticated]
+      redirect_to authenticate_path
+    end
+    session[:authenticated] = nil
   end
 
   private
@@ -75,6 +82,12 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:name, :username, :email, :password, :password_confirmation)
+    end
+    
+    def check_update_password
+      if params[:user][:password]
+        @user.updating_password = true
+      end
     end
     
 end

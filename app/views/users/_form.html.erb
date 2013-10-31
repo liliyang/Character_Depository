@@ -24,7 +24,7 @@
       <%= f.text_field :email %>
     </div>
     
-    <% if @user.should_validate_password? %>
+    <% if @user.new_record? %>
       <%= render :partial => "password", :locals => {:f => f} %>
     <% end %>
     

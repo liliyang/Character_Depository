@@ -5,7 +5,7 @@ HelloWorld::Application.routes.draw do
   end
   
   resources :users
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :sessions
   resources :searches
   
   match 'character_groups/:character_type' => 'characters#index', :as => 'character_type', via: :get
@@ -17,6 +17,7 @@ HelloWorld::Application.routes.draw do
   match 'signup' => 'users#new', via: :get
   match 'signin' => 'sessions#new', via: :get
   match 'signout' => 'sessions#destroy', via: :delete
+  match 'authenticate' => 'sessions#edit', via: :get
   
   match 'set_password/:id' => 'users#set_password', :as => 'set_password', via: [:get, :put]
   

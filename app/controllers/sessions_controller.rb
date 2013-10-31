@@ -1,8 +1,19 @@
 class SessionsController < ApplicationController
+
   
   # GET /signin
   def new
 
+  end
+  
+  # GET /authenticate
+  def edit
+    if current_user.authenticate(params[:old_password])
+      redirect_to set_password_path(current_user)
+      session[:authenticated] = true
+    elsif params[:old_password]
+      redirect_to authenticate_path, alert: "Invalid password! If you're not #{current_user.username}, please sign in using your own user account."
+    end
   end
 
   # POST /sessions
@@ -12,7 +23,7 @@ class SessionsController < ApplicationController
       sign_in user
       redirect_to user
     else
-      flash.now[:alert] = 'Invalid email/password combination!'
+      flash.now[:alert] = 'Invalid username/password combination!'
       render action: 'new'
     end
   end

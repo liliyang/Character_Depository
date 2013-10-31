@@ -1,0 +1,15 @@
+<% title "Please Re-enter Your Password" %>
+
+<div class="form_wrapper">
+  <%= form_tag authenticate_path, :method => 'get' do |f| %>
+
+    <p>
+      <%= label_tag :old_password, "Old Password" %>
+      <%= password_field_tag :old_password, params[:old_password] %>
+      <br>
+      <%= submit_tag "Submit", :name => nil %>
+    </p>
+
+  <% end %>
+
+</div>
