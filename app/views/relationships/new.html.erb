@@ -35,10 +35,12 @@ In order to search for a character by name, enter the character name in the box 
           <td id="char_data"><%= character.age %></td>
           <td id="char_data"><%= character.character_type %></td>
           <td id="char_data"><%= character.rank %></td>
-          <%= form_tag character_relationships_path(relative_id: character.id), method: :post do %>
-            <td id="relationship_form"><%= text_field_tag :relation_type %></td>
-            <td id="relationship_form"><%= submit_tag "Add Relationship" %></td>
-          <% end %>
+          <td id="relationship_form">
+            <%= form_tag character_relationships_path(relative_id: character.id), method: :post do %>
+              <span><%= text_field_tag :relation_type %></span>
+              <span><%= submit_tag "Add Relationship" %></span>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>
@@ -49,3 +51,5 @@ In order to search for a character by name, enter the character name in the box 
 <br><hr>
 
 <%= link_to 'Back to Character Page', character_path(@character) %>
+
+<br>

@@ -9,8 +9,7 @@
         <th>Character Type</th>
         <th>Character Rank</th>
         <th>Relationship Type</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <th></th>
       </tr>
     </thead>
 
@@ -21,15 +20,13 @@
           <td id="char_data"><%= relationship.relative.age %></td>
           <td id="char_data"><%= relationship.relative.character_type %></td>
           <td id="char_data"><%= relationship.relative.rank %></td>
-          <%= form_for([@character, relationship]) do |f| %>
-            <td id="relationship_form">
+          <td id="edit_relationship_form">
+            <%= form_for([@character, relationship]) do |f| %>
               <%= f.text_field :relation_type %>
-            </td>
-            <td id="relationship_form">
               <%= f.submit %>
-            </td>
-          <% end %>
-          <td id="relationship_form"><%= button_to 'Remove Relationship', character_relationship_path(@character, relationship), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
+          </td>
+          <td id='delete_button'><%= button_to 'Remove Relationship', character_relationship_path(@character, relationship), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>

@@ -4,8 +4,26 @@
 
 
 #relationship_form {
-  input, form {
-    width: 90%;
+  width: 50%;
+  input {
+    width: 45%;
+    margin: 0;
+    padding: 2px;
+  }
+}
+
+#edit_relationship_form {
+  width: 40%;
+  input {
+    width: 48%;
+    margin: 0;
+    padding: 2px;
+  }
+}
+
+#delete_button {
+  input {
+    width: 95%;
     margin: 0;
     padding: 2px;
   }
