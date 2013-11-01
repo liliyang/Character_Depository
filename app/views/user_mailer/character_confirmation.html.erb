@@ -1,0 +1,35 @@
+<p>Hi <%= @user.name %>, </p>
+
+<p>Thanks for submitting your character to the database. For your reference:</p>
+
+<p>
+  <strong>Name Pronounced:</strong>
+  <%= @character.pronunciation %>
+  <br>
+  <strong>Character Type:</strong>
+  <%= @character.character_type %>
+  <br>
+  <strong>Rank:</strong>
+  <%= @character.rank %>
+  <br>
+  <strong>Age:</strong>
+  <%= @character.age %>
+  <br>
+  <strong>Gender:</strong>
+  <%= @character.gender %>
+</p>
+
+<p>
+  <strong>Appearance:</strong>
+  <%= simple_format(@character.description) %>
+</p>
+
+<p>
+  <strong>Personality:</strong>
+  <%= simple_format(@character.personality) %>
+</p>
+
+<p>
+  <strong>History:</strong>
+  <%= simple_format(@character.history) %>
+</p>

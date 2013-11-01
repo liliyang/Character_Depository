@@ -37,6 +37,7 @@ class CharactersController < ApplicationController
     if params[:preview_button] || !@character.save
       render action: 'new'
     else
+      UserMailer.character_confirmation(@character).deliver
       redirect_to @character, notice: 'Character was successfully created.'
     end
   end
