@@ -1,7 +1,5 @@
 class CharactersController < ApplicationController
   
-  include CheckUser
-  
   before_action :set_character, only: [:show, :edit, :update, :destroy, :set_status, :approve_character]
   before_action :signed_in_user, only: [:new, :create, :edit, :update, :destroy, :set_status]
   before_action :correct_user, only: [:edit, :update, :destroy, :set_status]
@@ -36,28 +34,20 @@ class CharactersController < ApplicationController
   def create
     @character = Character.new(character_params)
     @character.user_id = current_user.id
-    respond_to do |format|
-      if params[:preview_button] || !@character.save
-        format.html { render action: 'new' }
-        format.json { render json: @character.errors, status: :unprocessable_entity }
-      else
-        format.html { redirect_to @character, notice: 'Character was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @character }
-      end
+    if params[:preview_button] || !@character.save
+      render action: 'new'
+    else
+      redirect_to @character, notice: 'Character was successfully created.'
     end
   end
 
   # PATCH/PUT /characters/1
   # PATCH/PUT /characters/1.json
   def update
-    respond_to do |format|
-      if @character.update(character_params)
-        format.html { redirect_to @character, notice: 'Character was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @character.errors, status: :unprocessable_entity }
-      end
+    if @character.update(character_params)
+      redirect_to @character, notice: 'Character was successfully updated.'
+    else
+      render action: 'edit'
     end
   end
 
@@ -65,10 +55,7 @@ class CharactersController < ApplicationController
   # DELETE /characters/1.json
   def destroy
     @character.destroy
-    respond_to do |format|
-      format.html { redirect_to characters_url }
-      format.json { head :no_content }
-    end
+    redirect_to characters_url
   end
   
   def new_created

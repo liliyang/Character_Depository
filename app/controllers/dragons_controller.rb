@@ -1,7 +1,5 @@
 class DragonsController < ApplicationController
   
-  include CheckUser
-  
   before_action :set_character
   before_action :set_dragon, only: [:edit, :update, :destroy]
   before_action :signed_in_user, only: [:new, :create, :edit, :update, :destroy]
@@ -46,9 +44,6 @@ class DragonsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_character
-      @character = Character.find_by(name: params[:character_id])
-    end
     
     def set_dragon
       @dragon = @character.dragon

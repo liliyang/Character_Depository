@@ -1,7 +1,5 @@
 class SearchesController < ApplicationController
   
-  include SearchesHelper
-  
   # Simple search form
   def index
     @characters = search(params[:search])

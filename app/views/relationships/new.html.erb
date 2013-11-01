@@ -1,0 +1,51 @@
+<% title "New Relationships "%>
+
+<p>
+In order to search for a character by name, enter the character name in the box below. If you cannot remember the whole name then don't worry, just put in part of the name and all results will be displayed.
+</p>
+
+<%= form_tag new_character_relationship_path(@character), method: :get do %>
+  <p>
+    <%= text_field_tag :search %>
+    <%= submit_tag "Search", name: nil %>
+  </p>
+<% end %>
+
+
+<div class="relations">
+  <h2>Listing Characters</h2>
+
+
+  <table class="char_table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Character Type</th>
+        <th>Character Rank</th>
+        <th>Relationship Type</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @characters.each do |character| %>
+        <tr>
+          <td id="char_data"><%= link_to character.name, character %></td>
+          <td id="char_data"><%= character.age %></td>
+          <td id="char_data"><%= character.character_type %></td>
+          <td id="char_data"><%= character.rank %></td>
+          <%= form_tag character_relationships_path(relative_id: character.id), method: :post do %>
+            <td id="relationship_form"><%= text_field_tag :relation_type %></td>
+            <td id="relationship_form"><%= submit_tag "Add Relationship" %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<div>
+
+<br><hr>
+
+<%= link_to 'Back to Character Page', character_path(@character) %>

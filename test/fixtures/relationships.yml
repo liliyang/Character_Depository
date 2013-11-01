@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  character_id: 
+  relative_id: 
+  relation_type: MyString
+
+two:
+  character_id: 
+  relative_id: 
+  relation_type: MyString

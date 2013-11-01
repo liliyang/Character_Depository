@@ -3,6 +3,21 @@
 
 <%= render 'character'%>
 
+<% if @character.relationships.count > 0 %>
+  <hr>
+  <p>
+    Listing <%= @character.name %>'s relationships:
+  </p>
+  <ul>
+    <% @character.relationships.group_by(&:relation_type).each do |relation_type, relationships| %>
+      <li>
+        <strong><%= relation_type %>: </strong>
+        <%= map_relationships(relationships) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
 <% if @character.dragon %>
   <hr>
   <p>
@@ -70,6 +85,8 @@
 <center>
   <p>
     |<%= link_to 'Edit Character', edit_character_path(@character.name) %> |
+    <%= link_to 'Add Relationships', new_character_relationship_path(@character.name) %> |
+    <%= link_to 'Edit Relationships', edit_character_relationships_path(@character.name)%> |
     <% unless @character.dragon %>
       <%= link_to 'Add Dragon', new_character_dragon_path(@character.name) %> | 
     <% end %>
