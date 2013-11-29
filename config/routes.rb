@@ -1,6 +1,6 @@
 HelloWorld::Application.routes.draw do
 
-  match 'characters/:character_id/edit' => 'relationships#edit', :as => 'edit_character_relationships', via: :get
+  match 'characters/:character_id/relationships/edit' => 'relationships#edit', :as => 'edit_character_relationships', via: :get
     
   resources :characters do
     resources :dragons
