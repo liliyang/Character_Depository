@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20131101163353) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "characters", force: true do |t|
     t.string   "name"
     t.string   "pronunciation"
@@ -38,7 +41,7 @@ ActiveRecord::Schema.define(version: 20131101163353) do
     t.boolean  "active",         default: true
   end
 
-  add_index "characters", ["user_id"], name: "index_characters_on_user_id"
+  add_index "characters", ["user_id"], name: "index_characters_on_user_id", using: :btree
 
   create_table "dragons", force: true do |t|
     t.integer  "rider_id"
@@ -51,19 +54,19 @@ ActiveRecord::Schema.define(version: 20131101163353) do
     t.datetime "updated_at"
   end
 
-  add_index "dragons", ["rider_id"], name: "index_dragons_on_rider_id"
+  add_index "dragons", ["rider_id"], name: "index_dragons_on_rider_id", using: :btree
 
   create_table "pets", force: true do |t|
+    t.integer  "character_id"
     t.string   "name"
     t.string   "pet_type"
     t.text     "description"
     t.text     "personality"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "character_id"
   end
 
-  add_index "pets", ["character_id"], name: "index_pets_on_character_id"
+  add_index "pets", ["character_id"], name: "index_pets_on_character_id", using: :btree
 
   create_table "relationships", force: true do |t|
     t.integer  "character_id"
@@ -84,8 +87,8 @@ ActiveRecord::Schema.define(version: 20131101163353) do
     t.boolean  "admin",           default: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
-  add_index "users", ["username"], name: "index_users_on_username", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
 end
