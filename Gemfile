@@ -50,3 +50,6 @@ gem 'simple_form'
 
 # Compatible with Heruko
 gem 'rails_12factor', group: :production
+
+# Use figaro to set up env variables
+gem 'figaro'
