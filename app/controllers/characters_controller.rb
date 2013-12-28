@@ -60,12 +60,12 @@ class CharactersController < ApplicationController
   end
   
   def new_created
-    @characters = Character.recent
+    @characters = Character.display.recent
     
   end
   
   def new_updated
-    @characters = Character.updated
+    @characters = Character.display.updated
   end
   
   def set_status

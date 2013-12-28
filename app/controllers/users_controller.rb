@@ -19,6 +19,8 @@ class UsersController < ApplicationController
       format.html do
         if is_current_user?(@user)
           render :mypage
+        else
+          @characters = Character.display.where(user: @user)
         end
       end
       format.js
