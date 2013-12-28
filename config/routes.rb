@@ -19,8 +19,7 @@ HelloWorld::Application.routes.draw do
   match 'updated_characters' => 'characters#new_updated', :as => 'updated_characters', via: :get
   match 'set_status/:id' => 'characters#set_status', :as => 'set_status', via: [:get, :put]
   match 'approve_character/:id' => 'characters#approve_character', :as => 'approve_character', via: [:get, :put]
-  
-
+  match 'characters/:id/upload_picture' => 'characters#upload_picture', :as => 'upload_picture', via: [:get, :post]
   
   match 'signup' => 'users#new', via: :get
   match 'signin' => 'sessions#new', via: :get
@@ -28,7 +27,6 @@ HelloWorld::Application.routes.draw do
   match 'authenticate' => 'sessions#edit', via: :get
   
   match 'set_password/:id' => 'users#set_password', :as => 'set_password', via: [:get, :put]
-  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -53,3 +53,6 @@ gem 'rails_12factor', group: :production
 
 # Use figaro to set up env variables
 gem 'figaro'
+
+# To use with Amazon Storage
+gem 'aws-s3'

@@ -1,8 +1,8 @@
 class CharactersController < ApplicationController
   
-  before_action :set_character, only: [:show, :edit, :update, :destroy, :set_status, :approve_character]
+  before_action :set_character, only: [:show, :edit, :update, :destroy, :set_status, :approve_character, :upload_picture]
   before_action :signed_in_user, only: [:new, :create, :edit, :update, :destroy, :set_status]
-  before_action :correct_user, only: [:edit, :update, :destroy, :set_status]
+  before_action :correct_user, only: [:edit, :update, :destroy, :set_status, :upload_picture]
   before_action :admin_user, only: [:approve_character]
 
   # GET /characters
@@ -85,6 +85,18 @@ class CharactersController < ApplicationController
       redirect_to users_path, alert: "Error! Failed to Approve!"
     end
   end
+  
+  def upload_picture
+    if params[:picture]
+      upload!
+      if @character.save
+        redirect_to upload_picture_path(@character), notice: "Image successfully uploaded!"
+      else
+        redirect_to upload_picture_path(@character), alert: "Error! Failed to Upload Image"
+      end
+    end
+    
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -97,4 +109,12 @@ class CharactersController < ApplicationController
       params.require(:character).permit(:name, :pronunciation, :character_type, :craft, :rank, :age, :gender, :location, :description, :personality, :history)
     end
     
+    def upload!
+      uploaded_io = params[:picture]
+      if uploaded_io
+        file = "character_#{@character.id}.jpg"
+        AWS::S3::S3Object.store(file, uploaded_io.read, ENV["AWS_BUCKET"], :access => :public_read)
+        @character.picture = "https://s3.amazonaws.com/#{ENV["AWS_BUCKET"]}/character_#{@character.id}.jpg"
+      end
+    end
 end

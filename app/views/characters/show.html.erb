@@ -81,17 +81,27 @@
 <% end %>
 
 <hr>
+<% if @character.user == current_user %>
+  <center>
+    <p>
+      |<%= link_to 'Edit Character', edit_character_path(@character.name) %> |
+      <%= link_to 'Add Relationships', new_character_relationship_path(@character.name) %> |
+      <%= link_to 'Edit Relationships', edit_character_relationships_path(@character.name)%> |
+      <% unless @character.dragon %>
+        <%= link_to 'Add Dragon', new_character_dragon_path(@character.name) %> | 
+      <% end %>
+  
+      <%= link_to 'Add Pet', new_character_pet_path(@character.name) %> | 
+      <%= link_to 'Upload Picture', upload_picture_path(@character)%> |
+      <%= link_to 'Back to All Characters', characters_path %> |
+    </p>
+  </center>
 
+<% else %>
 <center>
   <p>
-    |<%= link_to 'Edit Character', edit_character_path(@character.name) %> |
-    <%= link_to 'Add Relationships', new_character_relationship_path(@character.name) %> |
-    <%= link_to 'Edit Relationships', edit_character_relationships_path(@character.name)%> |
-    <% unless @character.dragon %>
-      <%= link_to 'Add Dragon', new_character_dragon_path(@character.name) %> | 
-    <% end %>
-  
-    <%= link_to 'Add Pet', new_character_pet_path(@character.name) %> | 
-    <%= link_to 'Back to All Characters', characters_path %> |
+    |<%= link_to 'Back to All Characters', characters_path %> |
+    <%= link_to "See more of #{@character.user.username}'s characters", user_path(@character.user) %> |
   </p>
 </center>
+<% end%>

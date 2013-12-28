@@ -1,0 +1,25 @@
+
+<%= title "Upload Picture" %>
+
+<% if @character.picture %>
+  <p>
+    <%= @character.name %>'s current picture:
+    <center>
+      <%= image_tag(@character.picture) %>
+    </center>
+  </p>
+  <hr>
+<% end %>
+
+<p>
+  Upload a new picture for <%= @character.name %> here.
+</p>
+
+<%= form_tag({url: upload_picture_path(@character), method: :get}, multipart: true) do %>
+  <p>
+    <%= label_tag :picture, "Upload this file:"%>
+    <%= file_field_tag :picture %>
+    <%= submit_tag "Send File", name: nil %>
+  </p>
+<% end %>
+

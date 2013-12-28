@@ -1,7 +1,11 @@
 <p>
   <center>
     <strong>User:</strong>
-    <%= link_to @character.user.username, user_path(@character.user.username) %>
+    <%= link_to @character.user.username, user_path(@character.user) %>
+    <% if @character.picture %>
+      <br><br>
+      <%= image_tag(@character.picture) %>
+    <% end %>
   </center>
   <strong>Name Pronounced:</strong>
   <%= @character.pronunciation %>
