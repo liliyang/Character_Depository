@@ -34,6 +34,9 @@
       <td class="side_menu">
         <div>
           <p>
+            <%= link_to "About Exile Weyr", articles_path %>
+          </p>
+          <p>
             <%= link_to "All Characters", characters_path %>
           </p>
           <p>
@@ -47,6 +50,9 @@
           </p>
           <p>
             <%= link_to "Holders", character_type_path("Holder") %>
+          </p>
+          <p>
+            <%= link_to "Weyrlings", character_type_path("Weyrling") %>
           </p>
           <p>
             <%= link_to "New Characters", recent_characters_path %>
@@ -66,9 +72,14 @@
         <h2><%= yield :title %></h2>
         
         <%= yield %>
+        <br><br><br>
+        <div id="footnote">
+          All references to the worlds, characters and works of Anne McCaffery and/or Todd McCaffery are copyrighted and belong to their authors. Exile, nor it's BoD own any part of Pern or any character featured in the books. The Dragonriders of Pern (R) is a registered U.S. Patent and Trade Office by Anne McCaffery.
+        </div>
       </td>
     </tr>
   <tbody>
 </table>
+
 </body>
 </html>

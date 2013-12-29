@@ -1,0 +1,19 @@
+<% title "Articles" %>
+
+<% @articles.group_by(&:category).each do |category, articles| %>
+<table>
+  <h2><%= category %></h2>
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+        <td class="title"><%= link_to article.title, article_path(article) %></td>
+        <td class="author"><%= article.username %></td>
+        <td class="last_updated"><%= article.updated_at.strftime("%b %d, %Y") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>
+<br>
+
+<%= link_to 'New Article', new_article_path %>

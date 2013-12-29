@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131226231905) do
+ActiveRecord::Schema.define(version: 20131229214937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "articles", force: true do |t|
+    t.string   "title"
+    t.string   "slug"
+    t.string   "category"
+    t.string   "picture"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "username"
+  end
 
   create_table "characters", force: true do |t|
     t.string   "name"
@@ -23,23 +34,27 @@ ActiveRecord::Schema.define(version: 20131226231905) do
     t.string   "rank"
     t.integer  "age"
     t.string   "gender"
-    t.string   "location",       default: "Arolos Weyr"
+    t.string   "location",          default: "Arolos Weyr"
     t.text     "description"
     t.text     "personality"
     t.text     "history"
-    t.date     "birthdate"
-    t.integer  "pet_count",      default: 0
-    t.boolean  "rider",          default: false
-    t.boolean  "candidate",      default: false
-    t.boolean  "crafter",        default: false
-    t.boolean  "holder",         default: false
+    t.integer  "pet_count",         default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "craft"
     t.integer  "user_id"
-    t.boolean  "approved",       default: false
-    t.boolean  "active",         default: true
+    t.boolean  "approved",          default: false
+    t.boolean  "active",            default: true
     t.string   "picture"
+    t.string   "preference"
+    t.text     "abilities"
+    t.string   "dragon_preference"
+    t.string   "dragon_names"
+    t.string   "craft_rank"
+    t.string   "craft_specialty"
+    t.text     "craft_abilities"
+    t.string   "hold"
+    t.string   "hold_size"
   end
 
   add_index "characters", ["user_id"], name: "index_characters_on_user_id", using: :btree
@@ -53,6 +68,9 @@ ActiveRecord::Schema.define(version: 20131226231905) do
     t.text     "personality"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "wing"
+    t.string   "size"
+    t.text     "abilities"
   end
 
   add_index "dragons", ["rider_id"], name: "index_dragons_on_rider_id", using: :btree
@@ -86,6 +104,8 @@ ActiveRecord::Schema.define(version: 20131226231905) do
     t.datetime "updated_at"
     t.string   "remember_token"
     t.boolean  "admin",           default: false
+    t.integer  "age"
+    t.string   "messenger"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -1,0 +1,13 @@
+<% title @article.title %>
+
+<% if @article.picture %>
+<p>
+  <center><%= image_tag @article.picture %></center>
+</p>
+<% end %>
+
+<p>
+  <%= @article.body %>
+</p>
+
+<%= link_to 'Back to All Articles', articles_path %>
