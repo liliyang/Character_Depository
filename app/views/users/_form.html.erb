@@ -12,8 +12,12 @@
   <% end %>
   <div class="form_wrapper">
     <div class="field">
-      <%= f.label :name %><br>
+      <%= f.label :name %> (Will not be displayed.)<br>
       <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :age %> (Will not be displayed.)<br>
+      <%= f.text_field :age %>
     </div>
     <div class="field">
       <%= f.label :username %><br>
@@ -22,6 +26,10 @@
     <div class="field">
       <%= f.label :email %><br>
       <%= f.text_field :email %>
+    </div>
+    <div class="field">
+      <%= f.label :messenger %> (AIM, Trillian, etc...)<br>
+      <%= f.text_field :messenger %>
     </div>
     
     <% if @user.new_record? %>

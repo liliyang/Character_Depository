@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :characters, dependent: :destroy
   
   validates :name, presence: true
+  validates :age, presence: true, numericality: { greater_than_or_equal_to: 16 }
   validates :username, presence: true, length: { maximum: 25}, uniqueness: true, format: { without: /\s/ }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }

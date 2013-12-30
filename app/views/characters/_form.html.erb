@@ -10,6 +10,8 @@
   </div>
 <% end %>
 
+<strong>Character Information:</strong><br><br>
+
 <div class="field">
   <%= f.label :name %><br>
   <%= f.text_field :name %>
@@ -19,24 +21,24 @@
   <%= f.text_field :pronunciation %>
 </div>
 <div class="field">
-  <%= f.label :character_type %><br>
-  <%= f.select :character_type, ['Candidate', 'Crafter', 'Dragonrider', 'Holder', 'Weyrling', 'Other'] %>
+  <%= f.label :age %><br>
+  <%= f.number_field :age %>
 </div>
 <div class="field">
-  <%= f.label :craft %><br>
-  <%= f.select :craft, ['Artist', 'Baker', 'Beastcraft', 'Chemist', 'Cobbler', 'Dolphineer', 'DragonHealer', 'Farmer', 'Fisher', 'Glasscrafter', 'Harper', 'Healer', 'Miner', 'Runner', 'Seacrafter', 'Smith', 'Tailor', 'Tanner', 'Vinter', 'Weaver', 'Woodcraft', 'Whercraft', 'Other'], include_blank: true %>
+  <%= f.label :character_type %><br>
+  <%= f.select :character_type, ['Candidate', 'Crafter', 'Dragonrider', 'Holder', 'Weyrling', 'Other'] %>
 </div>
 <div class="field">
   <%= f.label :rank %><br>
   <%= f.text_field :rank %>
 </div>
 <div class="field">
-  <%= f.label :age %><br>
-  <%= f.number_field :age %>
-</div>
-<div class="field">
   <%= f.label :gender %><br>
   <%= f.select :gender, ['Male', 'Female'] %>
+</div>
+<div class="field">
+  <%= f.label "Sexual Preference" %><br>
+  <%= f.select :preference, ['Bisexual', 'Heterosexual', 'Homosexual', 'Unsure'] %>
 </div>
 <div class="field">
   <%= f.label :location %><br>
@@ -53,4 +55,49 @@
 <div class="field">
   <%= f.label :history %><br>
   <%= f.text_area :history %>
+</div>
+<div class="field">
+  <%= f.label "Abilities/Strengths/Weaknesses" %><br>
+  <%= f.text_area :abilities %>
+</div>
+
+<hr>
+<strong>Candidate Information:</strong> (Only fill in this if you wish your character to be considered for impression.)<br><br>
+<div class="field">
+  <%= f.label "Dragon Color Preferences"%><br>
+  <%= f.text_field :dragon_preference %>
+</div>
+<div class="field">
+  <%= f.label "Dragon Names"%><br>
+  <%= f.text_field :dragon_names %>
+</div>
+
+<hr>
+<strong>Crafter Information:</strong> (Only fill in this if you wish your character is involved in a craft.)<br><br>
+<div class="field">
+  <%= f.label :craft %><br>
+  <%= f.select :craft, ['Artist', 'Baker', 'Beastcraft', 'Chemist', 'Cobbler', 'Dolphineer', 'DragonHealer', 'Farmer', 'Fisher', 'Glasscrafter', 'Harper', 'Healer', 'Miner', 'Pirate', 'Runner', 'Sailor', 'Seacrafter', 'Smith', 'Tailor', 'Tanner', 'Vinter', 'Weaver', 'Woodcraft', 'Whercraft', 'Other'], include_blank: true %>
+</div>
+<div class="field">
+  <%= f.label "Craft Rank"%><br>
+  <%= f.text_field :craft_rank %>
+</div>
+<div class="field">
+  <%= f.label "Specialty"%><br>
+  <%= f.text_field :craft_specialty %>
+</div>
+<div class="field">
+  <%= f.label "Strength/Weaknesses"%><br>
+  <%= f.text_area :craft_abilities %>
+</div>
+
+<hr>
+<strong>Holder Information:</strong> (Only fill in this if your character is affiliated with a hold.)<br><br>
+<div class="field">
+  <%= f.label :hold %><br>
+  <%= f.text_field :hold %>
+</div>
+<div class="field">
+  <%= f.label "Size" %><br>
+  <%= f.text_field :hold_size %>
 </div>

@@ -24,6 +24,14 @@
     <%= f.number_field :age %>
   </div>
   <div class="field">
+    <%= f.label :wing %><br>
+    <%= f.text_field :wing %>
+  </div>
+  <div class="field">
+    <%= f.label :size %><br>
+    <%= f.text_field :size %>
+  </div>
+  <div class="field">
     <%= f.label "Appearance" %><br>
     <%= f.text_area :description %>
   </div>
@@ -31,6 +39,10 @@
     <%= f.label :personality %><br>
     <%= f.text_area :personality %>
   </div>
+  <div class="field">
+    <%= f.label "Strength/Weaknesses" %><br>
+    <%= f.text_area :abilities %>
+  </div> 
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -7,7 +7,7 @@
 <% end %>
 
 <p>
-  <%= @article.body %>
+  <%= simple_format(@article.body) %>
 </p>
 
 <%= link_to 'Back to All Articles', articles_path %>

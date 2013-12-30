@@ -51,7 +51,7 @@ class DragonsController < ApplicationController
     
     # Never trust parameters from the scary internet, only allow the white list through.
     def dragon_params
-      params.require(:dragon).permit(:name, :age, :color, :description, :personality)
+      params.require(:dragon).permit(:name, :age, :wing, :size, :color, :description, :personality, :abilities)
     end
     
 end
