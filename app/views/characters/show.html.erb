@@ -26,9 +26,11 @@
   
   <p>
     <strong>Name:</strong>
-    <%= @character.dragon.name %> (
-    <%= link_to 'Edit', edit_character_dragon_path(@character.name, @character.dragon) %> |
-    <%= link_to 'Delete', character_dragon_path(@character.name, @character.dragon), method: :delete, data: { confirm: 'Are you sure?' } %> )
+    <%= @character.dragon.name %> 
+    <% if is_admin? || is_current_user?(@character.user) %>
+      ( <%= link_to 'Edit', edit_character_dragon_path(@character.name, @character.dragon) %> |
+      <%= link_to 'Delete', character_dragon_path(@character.name, @character.dragon), method: :delete, data: { confirm: 'Are you sure?' } %> )
+    <% end %>
     <br>
     <strong>Color:</strong>
     <%= @character.dragon.color %>
@@ -60,9 +62,11 @@
 
   <p>
     <strong>Name:</strong>
-    <%= pet.name %> ( 
-    <%= link_to 'Edit', edit_character_pet_path(@character.name, pet) %> |
+    <%= pet.name %> 
+    <% if is_admin? || is_current_user?(@character.user) %>
+    ( <%= link_to 'Edit', edit_character_pet_path(@character.name, pet) %> |
     <%= link_to 'Delete', character_pet_path(@character.name, pet), method: :delete, data: { confirm: 'Are you sure?' } %> )
+    <% end %>
     <br>
     <strong>Type:</strong>
     <%= pet.pet_type %>
@@ -81,7 +85,7 @@
 <% end %>
 
 <hr>
-<% if @character.user == current_user %>
+<% if is_admin? || is_current_user?(@character.user) %>
   <center>
     <p>
       |<%= link_to 'Edit Character', edit_character_path(@character.name) %> |

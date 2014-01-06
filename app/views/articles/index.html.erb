@@ -4,7 +4,7 @@
 <table>
   <h2><%= category %></h2>
   <tbody>
-    <% @articles.each do |article| %>
+    <% articles.each do |article| %>
       <tr>
         <td class="title"><%= link_to article.title, article_path(article) %></td>
         <td class="author"><%= article.username %></td>
@@ -16,4 +16,6 @@
 <% end %>
 <br>
 
-<%= link_to 'New Article', new_article_path %>
+<% if is_admin? %>
+  <%= link_to 'New Article', new_article_path %>
+<% end %>

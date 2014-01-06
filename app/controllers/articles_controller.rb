@@ -62,21 +62,17 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :slug, :category, :body)
+      params.require(:article).permit(:title, :category, :body)
     end
     
     # Upload images to amazon s3
     def upload_image!
       uploaded_io = params[:article][:picture]
       if uploaded_io
-        file = "article_#{@article.id}.jpg"
+        file = "article_#{@article.slug}.jpg"
         AWS::S3::S3Object.store(file, uploaded_io.read, ENV["AWS_BUCKET"], :access => :public_read)
-        @article.picture = "https://s3.amazonaws.com/#{ENV["AWS_BUCKET"]}/article_#{@article.id}.jpg"
+        @article.picture = "https://s3.amazonaws.com/#{ENV["AWS_BUCKET"]}/#{file}"
       end
     end
     
-    # Creates a slug if one is not provided
-    def create_slug!
-      
-    end
 end

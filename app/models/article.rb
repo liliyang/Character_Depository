@@ -7,7 +7,7 @@ class Article < ActiveRecord::Base
   
   
   def generate_slug
-    self.slug = title.downcase.gsub(/\W/, ' ').strip.gsub(/\W/, '-')
+    self.slug = title.downcase.gsub(/\W/, ' ').strip.gsub(/\W/, '-') unless self.slug
   end
   
   def to_param

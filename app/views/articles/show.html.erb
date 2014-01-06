@@ -10,4 +10,8 @@
   <%= simple_format(@article.body) %>
 </p>
 
+<% if is_admin? %>
+  <%= link_to 'Edit', edit_article_path(@article) %> |
+  <%= link_to 'Delete', article_path(@article), method: :delete, data: { confirm: 'Are you sure?' } %> |
+<% end %>
 <%= link_to 'Back to All Articles', articles_path %>
