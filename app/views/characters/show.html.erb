@@ -26,10 +26,12 @@
   
   <p>
     <strong>Name:</strong>
-    <%= @character.dragon.name %> 
-    <% if is_admin? || is_current_user?(@character.user) %>
-      ( <%= link_to 'Edit', edit_character_dragon_path(@character.name, @character.dragon) %> |
-      <%= link_to 'Delete', character_dragon_path(@character.name, @character.dragon), method: :delete, data: { confirm: 'Are you sure?' } %> )
+    <%= @character.dragon.name %>
+    <% if signed_in? %> 
+      <% if is_admin? || is_current_user?(@character.user) %>
+        ( <%= link_to 'Edit', edit_character_dragon_path(@character.name, @character.dragon) %> |
+        <%= link_to 'Delete', character_dragon_path(@character.name, @character.dragon), method: :delete, data: { confirm: 'Are you sure?' } %> )
+      <% end %>
     <% end %>
     <br>
     <strong>Color:</strong>
@@ -76,9 +78,11 @@
   <p>
     <strong>Name:</strong>
     <%= pet.name %> 
-    <% if is_admin? || is_current_user?(@character.user) %>
-    ( <%= link_to 'Edit', edit_character_pet_path(@character.name, pet) %> |
-    <%= link_to 'Delete', character_pet_path(@character.name, pet), method: :delete, data: { confirm: 'Are you sure?' } %> )
+    <% if signed_in? %>
+      <% if is_admin? || is_current_user?(@character.user) %>
+      ( <%= link_to 'Edit', edit_character_pet_path(@character.name, pet) %> |
+      <%= link_to 'Delete', character_pet_path(@character.name, pet), method: :delete, data: { confirm: 'Are you sure?' } %> )
+      <% end %>
     <% end %>
     <br>
     <strong>Type:</strong>
@@ -98,27 +102,24 @@
 <% end %>
 
 <hr>
-<% if is_admin? || is_current_user?(@character.user) %>
-  <center>
-    <p>
-      |<%= link_to 'Edit Character', edit_character_path(@character.name) %> |
-      <%= link_to 'Add Relationships', new_character_relationship_path(@character.name) %> |
-      <%= link_to 'Edit Relationships', edit_character_relationships_path(@character.name)%> |
-      <% unless @character.dragon %>
-        <%= link_to 'Add Dragon', new_character_dragon_path(@character.name) %> | 
-      <% end %>
-  
-      <%= link_to 'Add Pet', new_character_pet_path(@character.name) %> | 
-      <%= link_to 'Upload Picture', upload_picture_path(@character)%> |
-      <%= link_to 'Back to All Characters', characters_path %> |
-    </p>
-  </center>
-
-<% else %>
 <center>
   <p>
+    <% if signed_in? %>
+      <% if is_admin? || is_current_user?(@character.user) %>
+
+        |<%= link_to 'Edit Character', edit_character_path(@character.name) %> |
+        <%= link_to 'Add Relationships', new_character_relationship_path(@character.name) %> |
+        <%= link_to 'Edit Relationships', edit_character_relationships_path(@character.name)%> |
+        <% unless @character.dragon %>
+          <%= link_to 'Add Dragon', new_character_dragon_path(@character.name) %> | 
+        <% end %>
+
+        <%= link_to 'Add Pet', new_character_pet_path(@character.name) %> | 
+        <%= link_to 'Upload Picture', upload_picture_path(@character)%>
+      
+      <% end %>
+    <% end %>
     |<%= link_to 'Back to All Characters', characters_path %> |
     <%= link_to "See more of #{@character.user.username}'s characters", user_path(@character.user) %> |
   </p>
 </center>
-<% end%>

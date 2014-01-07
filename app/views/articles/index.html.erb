@@ -15,7 +15,8 @@
 </table>
 <% end %>
 <br>
-
-<% if is_admin? %>
-  <%= link_to 'New Article', new_article_path %>
+<% if signed_in? %>
+  <% if is_admin? %>
+    <%= link_to 'New Article', new_article_path %>
+  <% end %>
 <% end %>
