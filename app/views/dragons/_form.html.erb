@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :color %><br>
-    <%= f.text_field :color %>
+    <%= f.select :color, ['Gold', 'Bronze', 'Silver', 'Brown', 'Blue', 'Green'] %>
   </div>
   <div class="field">
     <%= f.label :age %><br>
@@ -29,7 +29,7 @@
   </div>
   <div class="field">
     <%= f.label :size %><br>
-    <%= f.text_field :size %>
+    <%= f.select :size, ['Extra-Small', 'Small', 'Medium-Small', 'Medium', 'Medium-Large', 'Large', 'Extra-Large'] %>
   </div>
   <div class="field">
     <%= f.label "Appearance" %><br>

@@ -54,6 +54,10 @@ class ArticlesController < ApplicationController
     redirect_to articles_url
   end
 
+  def welcome
+    @article = Article.find_by(slug: 'announcements')
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article

@@ -7,8 +7,19 @@
       <%= image_tag(@character.picture) %>
     <% end %>
   </center>
-  <strong>Name Pronounced:</strong>
-  <%= @character.pronunciation %>
+  <% if @character.pronunciation %>
+    <strong>Name Pronounced:</strong>
+    <%= @character.pronunciation %>
+    <br>
+  <% end %>
+  <strong>Age:</strong>
+  <%= @character.age %>
+  <br>
+  <strong>Gender:</strong>
+  <%= @character.gender %>
+  <br>
+  <strong>Sexual Orientation:</strong>
+  <%= @character.preference %>
   <br>
   <strong>Character Type:</strong>
   <%= @character.character_type %>
@@ -16,11 +27,8 @@
   <strong>Rank:</strong>
   <%= @character.rank %>
   <br>
-  <strong>Age:</strong>
-  <%= @character.age %>
-  <br>
-  <strong>Gender:</strong>
-  <%= @character.gender %>
+  <strong>Location:</strong>
+  <%= @character.location %>
 </p>
 
 <p>
@@ -37,3 +45,51 @@
   <strong>History:</strong>
   <%= simple_format(@character.history) %>
 </p>
+
+<p>
+  <strong>Abilities/Strengths/Weaknesses:</strong>
+  <%= simple_format(@character.abilities) %>
+</p>
+
+<% if @character.character_type == "Candidate" %>
+<hr>
+<strong>Candidate Information</strong><br>
+<p>
+  <strong>Color Preference:</strong>
+  <%= @character.dragon_preference %>
+  <br>
+  <strong>Name Preferences:</strong>
+  <%= @character.dragon_names %>
+</p>
+<% end %>
+
+<% unless @character.craft.blank? %>
+<hr>
+<strong>Crafter Information</strong><br>
+<p>
+  <strong>Craft:</strong>
+  <%= @character.craft %>
+  <br>
+  <strong>Rank:</strong>
+  <%= @character.craft_rank %>
+  <br>
+  <strong>Specialty:</strong>
+  <%= @character.craft_specialty %>
+</p>
+<p>
+  <strong>Strengths/Weaknesses:</strong>
+  <%= simple_format(@character.craft_abilities) %>
+</p>
+<% end %>
+
+<% unless @character.hold.blank? %>
+<hr>
+<strong>Holder Information</strong><br>
+<p>
+  <strong>Hold:</strong>
+  <%= @character.hold %>
+  <br>
+  <strong>Hold Size:</strong>
+  <%= @character.hold_size %>
+</p>
+<% end %>

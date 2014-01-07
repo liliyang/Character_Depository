@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My Character Collection - <%= yield(:title) || "Welcome"  %></title>
+  <title>Exile Weyr - <%= yield(:title) || "Welcome"  %></title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -9,7 +9,7 @@
 <body>
 
 <div class="headline">
-  <h1>Welcome to My Character Collection!</h1>
+  <%= link_to image_tag("https://s3.amazonaws.com/exile-weyr-images/ExileWeyrLogo.png"), root_path %>
 </div>
 
 <div class="top_menu"> |

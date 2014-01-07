@@ -13,7 +13,9 @@ HelloWorld::Application.routes.draw do
   resources :searches
   resources :articles
   
-  root to: 'characters#index'
+  match 'welcome' => 'articles#welcome', :as => 'welcome', via: :get
+  
+  root to: 'articles#welcome'
   
   match 'character_groups/:character_type' => 'characters#index', :as => 'character_type', via: :get
   match 'recent_characters' => 'characters#new_created', :as => 'recent_characters', via: :get

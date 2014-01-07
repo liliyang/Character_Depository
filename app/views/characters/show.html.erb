@@ -21,7 +21,7 @@
 <% if @character.dragon %>
   <hr>
   <p>
-    Information about <%= @character.name %>'s dragon:
+    <strong>Information about <%= @character.name %>'s dragon</strong>
   </p>
   
   <p>
@@ -37,6 +37,14 @@
     <br>
     <strong>Age:</strong>
     <%= @character.dragon.age %>
+    <br>
+    <strong>Size:</strong>
+    <%= @character.dragon.size %>
+    <% if @character.dragon.wing %>
+      <br>
+      <strong>Wing:</strong>
+      <%= @character.dragon.wing %>
+    <% end %>
   </p>
   
   <p>
@@ -48,13 +56,18 @@
     <strong>Personality:</strong>
     <%= simple_format(@character.dragon.personality) %>
   </p>
+
+  <p>
+    <strong>Strength/Weaknesses:</strong>
+    <%= simple_format(@character.dragon.abilities) %>
+  </p>
 <% end %>
 
 
 <% if @character.pets.count > 0 %>
   <hr>
   <p>
-    Information about <%= @character.name %>'s <%= pluralize(@character.pets.count, "pet")%>:
+    <strong>Information about <%= @character.name %>'s <%= pluralize(@character.pets.count, "pet")%></strong>
   </p>
 <% end %>
 

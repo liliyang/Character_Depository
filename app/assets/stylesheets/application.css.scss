@@ -17,7 +17,7 @@ html {
 }
 
 body {
-  background-color: #E2E9E1;
+  background-color: #D8E7EB;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
@@ -86,25 +86,25 @@ img {
 
 .headline {
   text-align: center;
-  background-color: #255816;
-  height: 100px;
+  background-color: #000000;
+  height: 110px;
   width: 100%;
   border-style: double;
   border-width: 4px;
-  border-color: #255816;
+  border-color: #000000;
   h1 {
-    color: #E2E9E1;
+    color: #D8E7EB;
     font-family: "Comic Sans", "Comic Sans MS", cursive;
     font-size: 36px;
     line-height: 54px;
     vertical-align: middle;
-    text-shadow: 0 1px 1px #C5E4C1;
+    text-shadow: 0 1px 1px #D8E7EB;
   }
 }
  
 .top_menu {
   text-align: center;
-  background-color: #C5E4C1;
+  background-color: #A2D9E8;
   width: 100%;
   line-height: 36px;
   height: 36px;
@@ -121,7 +121,7 @@ img {
 
 .side_menu {
   text-align: center;
-  background-color: #C5E4C1;
+  background-color: #A2D9E8;
   width: 20%;
   padding-top: 20px;
   vertical-align: top;
@@ -177,7 +177,7 @@ img {
     margin: -7px;
     margin-bottom: 0px;
     background-color: #c00;
-    color: #E2E9E1;
+    color: #D8E7EB;
     border: 0;
   }
   ul li {

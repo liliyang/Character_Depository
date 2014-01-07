@@ -10,6 +10,8 @@
   </div>
 <% end %>
 
+<%= render 'rules' %>
+
 <strong>Character Information:</strong><br><br>
 
 <div class="field">
@@ -38,7 +40,7 @@
 </div>
 <div class="field">
   <%= f.label "Sexual Preference" %><br>
-  <%= f.select :preference, ['Bisexual', 'Heterosexual', 'Homosexual', 'Unsure'] %>
+  <%= f.select :preference, ['Asexual', 'Bisexual', 'Heterosexual', 'Homosexual', 'Unsure'] %>
 </div>
 <div class="field">
   <%= f.label :location %><br>
@@ -80,7 +82,7 @@
 </div>
 <div class="field">
   <%= f.label "Craft Rank"%><br>
-  <%= f.text_field :craft_rank %>
+  <%= f.select :craft_rank, ['Apprentice', 'Sr. Apprentice', 'Journeyman', 'Sr. Journeyman', 'Master', 'Craft Master'] %>
 </div>
 <div class="field">
   <%= f.label "Specialty"%><br>
