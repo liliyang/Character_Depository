@@ -56,7 +56,7 @@ class CharactersController < ApplicationController
   # DELETE /characters/1.json
   def destroy
     @character.destroy
-    redirect_to characters_url
+    redirect_to user_path(@character.user)
   end
   
   def new_created
