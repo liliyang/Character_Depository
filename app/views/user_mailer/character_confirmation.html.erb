@@ -1,35 +1,23 @@
 <p>Hi <%= @user.name %>, </p>
 
-<p>Thanks for submitting <%= @character.name %> to the database. You should hear back from us within the next few days. For your reference:</p>
+<p>We've received your new character <%= @character.name %>. We'll look over <%= @character.gender == 'Male' ? 'him' : 'her' %> and get back to you as soon as we can.</p>
 
 <p>
-  <strong>Name Pronounced:</strong>
-  <%= @character.pronunciation %>
-  <br>
-  <strong>Character Type:</strong>
-  <%= @character.character_type %>
-  <br>
-  <strong>Rank:</strong>
-  <%= @character.rank %>
-  <br>
-  <strong>Age:</strong>
-  <%= @character.age %>
-  <br>
-  <strong>Gender:</strong>
-  <%= @character.gender %>
+  In the meantime, take a look at what's been going on on the lists:
 </p>
 
 <p>
-  <strong>Appearance:</strong>
-  <%= simple_format(@character.description) %>
+  <%= link_to 'Exile Weyr', 'https://groups.google.com/forum/#!forum/exile-weyr'%>
 </p>
 
 <p>
-  <strong>Personality:</strong>
-  <%= simple_format(@character.personality) %>
+  <%= link_to 'Exile Weyr OOC', 'https://groups.google.com/forum/#!forum/exile-weyr-ooc'%>
 </p>
 
 <p>
-  <strong>History:</strong>
-  <%= simple_format(@character.history) %>
+  Stay posted!
+</p>
+
+<p>
+  ~ Exile BoD ~
 </p>

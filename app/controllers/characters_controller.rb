@@ -80,6 +80,7 @@ class CharactersController < ApplicationController
   def approve_character
     @character.approved = true
     if @character.save
+      UserMailer.character_approved(@character).deliver
       redirect_to users_path
     else
       redirect_to users_path, alert: "Error! Failed to Approve!"
