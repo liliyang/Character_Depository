@@ -34,35 +34,39 @@
       <td class="side_menu">
         <div>
           <p>
-            <%= link_to "About Exile Weyr", articles_path %>
+            <%= link_to "About Exile Weyr", article_path("about-exile-weyr") %>
           </p>
           <p>
-            <%= link_to "All Characters", characters_path %>
+            <%= link_to "Rules", article_path("rules") %>
           </p>
           <p>
-            <%= link_to "Candidates", character_type_path("Candidate") %>
+            <%= link_to "Lore", article_path("guide-to-playing") %>
           </p>
           <p>
-            <%= link_to "Crafters", character_type_path("Crafter") %>
+            <%= link_to "Writing Requirements", article_path("writing-requirements") %>
           </p>
           <p>
-            <%= link_to "Dragonriders", character_type_path("Dragonrider") %>
+            <%= link_to "FAQ", article_path("faq") %>
           </p>
           <p>
-            <%= link_to "Holders", character_type_path("Holder") %>
+            <%= link_to "Join Us!", article_path("how-to-join") %>
           </p>
           <p>
-            <%= link_to "Weyrlings", character_type_path("Weyrling") %>
+            <%= link_to "All Articles", articles_path %>
           </p>
           <p>
-            <%= link_to "New Characters", recent_characters_path %>
+            <%= link_to "Characters", characters_path %>
+          </p>
+          <p>
+            <%= link_to "Characters Search", searches_path %>
+          </p>
+          <p>
+            <%= link_to "Recently Created", recent_characters_path %>
           </p>
           <p>
             <%= link_to "Recently Updated", updated_characters_path %>
           </p>
-          <p>
-            <%= link_to "Search Characters", searches_path %>
-          </p
+          
         </div>
       </td>
       <td class="stuff">
