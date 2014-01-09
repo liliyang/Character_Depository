@@ -75,6 +75,7 @@ HelloWorld::Application.configure do
     password:             ENV["GMAIL_PASSWORD"],
     authentication:       'plain',
     enable_starttls_auto: true  }
+  config.action_mailer.default_url_options = { host: 'google.com' }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found).

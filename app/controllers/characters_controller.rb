@@ -5,6 +5,7 @@ class CharactersController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy, :set_status, :upload_picture]
   before_action :admin_user, only: [:approve_character]
 
+
   # GET /characters
   # GET /characters.json
   def index
@@ -78,9 +79,13 @@ class CharactersController < ApplicationController
   end
   
   def approve_character
+    send_email = true
     @character.approved = true
     if @character.save
-      UserMailer.character_approved(@character).deliver
+      if send_email
+        UserMailer.character_approved(@character).deliver
+        send_email = false
+      end
       redirect_to users_path
     else
       redirect_to users_path, alert: "Error! Failed to Approve!"

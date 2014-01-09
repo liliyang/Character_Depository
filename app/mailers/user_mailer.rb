@@ -15,14 +15,12 @@ class UserMailer < ActionMailer::Base
   def character_confirmation(character)
     @character = character
     @user = character.user
-
     mail to: @user.email, subject: "Your New Character #{@character.name} Has Been Submitted. Thanks!"
   end
   
   def character_approved(character)
     @character = character
     @user = character.user
-
     mail to: @user.email, subject: "Your New Character #{@character.name} Has Been Approved!"
   end
 end
