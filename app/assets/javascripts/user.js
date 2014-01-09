@@ -8,4 +8,3 @@ function list_characters() {
 }
 
 $(document).ready(list_characters);
-$(document).on("page:load", list_characters);

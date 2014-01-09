@@ -10,4 +10,4 @@ function show_character_form() {
 }
 
 $(document).ready(show_character_form);
-$(document).on("page:load", show_character_form);
+

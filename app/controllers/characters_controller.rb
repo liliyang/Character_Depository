@@ -62,7 +62,6 @@ class CharactersController < ApplicationController
   
   def new_created
     @characters = Character.display.recent
-    
   end
   
   def new_updated
@@ -79,13 +78,9 @@ class CharactersController < ApplicationController
   end
   
   def approve_character
-    send_email = true
-    @character.approved = true
+    @character.approved = !@character.approved
     if @character.save
-      if send_email
-        UserMailer.character_approved(@character).deliver
-        send_email = false
-      end
+      UserMailer.character_approved(@character).deliver
       redirect_to users_path
     else
       redirect_to users_path, alert: "Error! Failed to Approve!"
