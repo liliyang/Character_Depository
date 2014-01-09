@@ -15,7 +15,7 @@
     <% @characters.each do |character| %>
       <tr>
         <td class="char_data"><%= link_to character.name, character %></td>
-        <td class="char_data"><%= character.character_type %></td>
+        <td class="char_data"><%= link_to character.character_type, character_type_path(character.character_type) %></td>
         <td class="char_data"><%= character.craft %></td>
         <td class="char_data"><%= character.rank %></td>
         <td class="char_data"><%= character.dragon.name if character.dragon %></td>
