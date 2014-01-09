@@ -5,15 +5,15 @@ module SearchTools
   end
   
   def search_character_name(search)
-    Character.display.where("name LIKE ?", "%#{search}%")
+    Character.display.where("name ILIKE ?", "%#{search}%")
   end
   
   def search_pet_name(search)
-    Character.joins(:pets).where("pets.name LIKE ?", "%#{search}%")
+    Character.joins(:pets).where("pets.name ILIKE ?", "%#{search}%")
   end
   
   def search_dragon_name(search)
-    Character.joins(:dragon).where("dragons.name LIKE ?", "%#{search}%")
+    Character.joins(:dragon).where("dragons.name ILIKE ?", "%#{search}%")
   end
   
   private
