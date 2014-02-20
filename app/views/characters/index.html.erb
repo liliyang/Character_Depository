@@ -1,6 +1,16 @@
 <% title(params[:character_type] ? "#{params[:character_type]} List" : "Characters List") %>
 
-<p> Below is a list of all the <%= params[:character_type] ? params[:character_type].downcase : "characters" %> in alphabetical order. </p>
+<p> Below is a list of all the <%= params[:character_type] ? params[:character_type].downcase.pluralize : "characters" %> in alphabetical order. </p>
+<p>
+  Click here to see lists by character type: 
+  <%= link_to "All", :character_type => nil %>, 
+  <%= link_to "Candidates", :character_type => "Candidate" %>, 
+  <%= link_to "Crafters", :character_type => "Crafter" %>, 
+  <%= link_to "Holders", :character_type => "Holder" %>, 
+  <%= link_to "Riders", :character_type => "Dragonrider" %>, 
+  <%= link_to "Others", :character_type => "Other" %>
+</p>
+
 <hr>
 
 <%= render "list" %>

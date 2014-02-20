@@ -4,15 +4,16 @@ class CharactersController < ApplicationController
   before_action :signed_in_user, only: [:new, :create, :edit, :update, :destroy, :set_status]
   before_action :correct_user, only: [:edit, :update, :destroy, :set_status, :upload_picture]
   before_action :admin_user, only: [:approve_character]
-
-
+  
+  helper_method :sort_column, :sort_direction
+  
   # GET /characters
   # GET /characters.json
   def index
     if params[:character_type]
-      @characters = Character.display.where(character_type: params[:character_type]).includes(:dragon)
+      @characters = Character.display.where(character_type: params[:character_type]).order(sort_column + " " + sort_direction).includes(:dragon)
     else
-      @characters = Character.display.includes(:dragon)
+      @characters = Character.display.order(sort_column + " " + sort_direction).includes(:dragon)
     end
   end
 
@@ -61,11 +62,11 @@ class CharactersController < ApplicationController
   end
   
   def new_created
-    @characters = Character.display.recent
+    @characters = Character.display.recent.order(sort_column + " " + sort_direction)
   end
   
   def new_updated
-    @characters = Character.display.updated
+    @characters = Character.display.updated.order(sort_column + " " + sort_direction)
   end
   
   def set_status
@@ -109,6 +110,7 @@ class CharactersController < ApplicationController
     def character_params
       params.require(:character).permit(:name, :pronunciation, :age, :character_type, :rank, :gender, :preference, :location, :description, :personality, :history, :abilities, :dragon_preference, :dragon_names, :craft, :craft_rank, :craft_specialty, :craft_abilities, :hold, :hold_size)
     end
+    
     def upload!
       uploaded_io = params[:picture]
       if uploaded_io
@@ -116,6 +118,14 @@ class CharactersController < ApplicationController
         AWS::S3::S3Object.store(file, uploaded_io.read, ENV["AWS_BUCKET"], :access => :public_read)
         @character.picture = "https://s3.amazonaws.com/#{ENV["AWS_BUCKET"]}/character_#{@character.id}.jpg"
       end
+    end
+    
+    def sort_column
+      Character.column_names.include?(params[:sort]) ? params[:sort] : "name"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
     
 end

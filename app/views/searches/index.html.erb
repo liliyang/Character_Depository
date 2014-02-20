@@ -15,5 +15,34 @@ Enter a character, dragon, or pet name in the box below. If you cannot remember 
 <h2>Search Results</h2>
 
 <% if params[:search] %>
-  <%= render "list" %>
+  <table class="char_table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Character Type</th>
+        <th>Craft</th>
+        <th>Rank</th>
+        <th>Dragon</th>
+        <th>Color</th>
+        <th>Owner</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @characters.each do |character| %>
+        <tr>
+          <td class="char_data"><%= link_to character.name, character %></td>
+          <td class="char_data"><%= link_to character.character_type, character_type_path(character.character_type) %></td>
+          <td class="char_data"><%= character.craft %></td>
+          <td class="char_data"><%= character.rank %></td>
+          <td class="char_data"><%= character.dragon.name if character.dragon %></td>
+          <td class="char_data"><%= character.dragon.color if character.dragon %></td>
+          <td class="char_data"><%= link_to character.user.username, user_path(character.user.username) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+  <hr>
 <% end %>
