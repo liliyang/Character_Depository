@@ -4,19 +4,28 @@
 
 .char_table {
   line-height: 22px;
+  #name, #gender, {
+    width: 10%;
+  }
+
+  #dragon_color, #user {
+    width: 7.5%;
+  }
+
+  #dragon_name{
+    width: 12.5%;
+  }
+  
+  #type, #craft {
+    width: 15%;
+  }
+  
+  #rank {
+    width: 22.5%;
+  }
 }
 
-#name, #gender, {
-  width: 12.5%;
-}
 
-#dragon_color, #user {
-  width: 7.5%;
-}
-
-#type, #craft, #rank, #dragon_name {
-  width: 15%;
-}
 
 #show_form {
   border: 1px solid #bbb;
