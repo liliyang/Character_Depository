@@ -19,6 +19,7 @@ Enter a character, dragon, or pet name in the box below. If you cannot remember 
     <thead>
       <tr>
         <th>Name</th>
+        <th>Gender</th>
         <th>Character Type</th>
         <th>Craft</th>
         <th>Rank</th>
@@ -31,13 +32,14 @@ Enter a character, dragon, or pet name in the box below. If you cannot remember 
     <tbody>
       <% @characters.each do |character| %>
         <tr>
-          <td class="char_data"><%= link_to character.name, character %></td>
-          <td class="char_data"><%= link_to character.character_type, character_type_path(character.character_type) %></td>
-          <td class="char_data"><%= character.craft %></td>
-          <td class="char_data"><%= character.rank %></td>
-          <td class="char_data"><%= character.dragon.name if character.dragon %></td>
-          <td class="char_data"><%= character.dragon.color if character.dragon %></td>
-          <td class="char_data"><%= link_to character.user.username, user_path(character.user.username) %></td>
+          <td class="char_data", id="name"><%= link_to character.name, character %></td>
+          <td class="char_data", id="gender"><%= character.gender %></td>
+          <td class="char_data", id="type"><%= link_to character.character_type, character_type_path(character.character_type) %></td>
+          <td class="char_data", id="craft"><%= character.craft %></td>
+          <td class="char_data", id="rank"><%= character.rank %></td>
+          <td class="char_data", id="dragon_name"><%= character.dragon.name if character.dragon %></td>
+          <td class="char_data", id="dragon_color"><%= character.dragon.color if character.dragon %></td>
+          <td class="char_data", id="user"><%= link_to character.user.username, user_path(character.user.username) %></td>
         </tr>
       <% end %>
     </tbody>
