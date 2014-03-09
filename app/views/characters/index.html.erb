@@ -13,4 +13,8 @@
 
 <hr>
 
-<%= render "list" %>
+<% if params[:character_type] == "Dragonrider" %>
+  <%= render "dragonriders" %>
+<% else %>
+  <%= render "list" %>
+<% end %>

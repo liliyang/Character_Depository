@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     @characters = @user.characters
     respond_to do |format|
       format.html do
-        if is_current_user?(@user)
+        if is_current_user?(@user) || is_admin?
           render :mypage
         else
           @characters = Character.display.where(user: @user)
