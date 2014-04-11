@@ -18,7 +18,7 @@
 
     <tbody>
       <% @characters.each do |character| %>
-        <% if character.dragon.color == color %>
+        <% if character.dragon && character.dragon.color == color %>
           <tr>
             <td class="char_data", id="name"><%= link_to character.name, character %></td>
             <td class="char_data", id="gender"><%= character.gender %></td>
