@@ -22,4 +22,8 @@ module SearchTools
     @character = Character.find_by(name: params[:character_id])
   end
   
+  def set_clutch
+    @clutch = Clutch.find(params[:clutch_id])
+  end
+  
 end

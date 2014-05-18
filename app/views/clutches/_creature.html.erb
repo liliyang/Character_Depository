@@ -1,0 +1,24 @@
+    <h2>About the <%= @clutch.creature_type %></h2>
+  
+    <p>
+      <strong>Color:</strong>
+      <%= egg.creature_color %>
+    </p>
+  
+    <p>
+      <strong>Appearance:</strong>
+      <%= simple_format(egg.creature_appearance) %>
+    </p>
+  
+    <p>
+      <strong>Personality:</strong>
+      <%= simple_format(egg.creature_personality) %>
+    </p>
+  
+    <p>
+      <i><%= "Based on #{egg.inspiration}"%></i>
+    </p>
+  
+    <p>
+      <i><%= "Impressed to #{egg.character}"%></i>
+    </p>

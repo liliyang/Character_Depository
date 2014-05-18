@@ -30,13 +30,41 @@
 
 <br>
 
+<% @clutch.eggs.each do |egg| %>
+
+  <h2>
+    <%= egg.name %> 
+    <% if signed_in? %>
+      <% if is_admin? || is_current_user?(@clutch.user) %>
+      <small>( <%= link_to 'Edit', edit_clutch_egg_path(@clutch, egg) %> )</small>
+      <% end %>
+    <% end %>
+  </h2>
+  
+  <p>  
+    <strong>Description:</strong>
+    <%= simple_format(egg.description) %>
+  </p>
+  
+  <% if @clutch.date_hatched < (Time.now - 1.day) %>
+    <%= render :partial => 'creature', :locals => {:egg => egg} %>
+    
+  <% elsif signed_in?%>
+    <% if is_admin? || is_current_user?(@clutch.user) %>
+      <%= render :partial => 'creature', :locals => {:egg => egg} %>
+    <% end %>
+  <% end %>
+  
+  <br><hr>
+<% end %>
+
 <center>
   <p>
     <% if signed_in? %>
       <% if is_admin? || is_current_user?(@clutch.user) %>
 
         |<%= link_to "Edit", edit_clutch_path(@clutch) %> |
-        <%= link_to "Add an Egg" %> |
+        <%= link_to "Add an Egg", new_clutch_egg_path(@clutch) %> |
         <%= link_to "Back to All Clutches", clutches_path %> | 
       <% end %>
     <% end %>

@@ -2,6 +2,8 @@ class Clutch < ActiveRecord::Base
 
   belongs_to :user
   
+  has_many :eggs
+  
   scope :display, ->{ where(approved: true) }
   default_scope { order("creature_type ASC")}
   

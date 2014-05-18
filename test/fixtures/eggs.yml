@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  description: MyText
+  creature_color: MyString
+  creature_appearance: MyText
+  creature_personality: MyText
+  character: MyString
+  inspiration: MyString
+
+two:
+  name: MyString
+  description: MyText
+  creature_color: MyString
+  creature_appearance: MyText
+  creature_personality: MyText
+  character: MyString
+  inspiration: MyString

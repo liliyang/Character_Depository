@@ -1,0 +1,45 @@
+<%= form_for([@clutch, @egg]) do |f| %>
+  <% if @egg.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@egg.errors.count, "error") %> prohibited this egg from being saved:</h2>
+
+      <ul>
+      <% @egg.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label "Egg Description" %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label "Color" %><br>
+    <%= f.select :creature_color, ['Gold', 'Bronze', 'Silver', 'Black', 'Brown', 'Blue', 'Green'] %>
+  </div>
+  <div class="field">
+    <%= f.label "Appearance" %><br>
+    <%= f.text_area :creature_appearance %>
+  </div>
+  <div class="field">
+    <%= f.label "Personality" %><br>
+    <%= f.text_area :creature_personality %>
+  </div>
+  <div class="field">
+    <%= f.label :inspiration %><br>
+    <%= f.text_field :inspiration %>
+  </div>
+  <div class="field">
+    <%= f.label "Impressed to" %><br>
+    <%= f.text_field :character %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
