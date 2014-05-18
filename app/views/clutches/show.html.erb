@@ -1,0 +1,44 @@
+<%= title "#{@clutch.dame}'s Clutch, Clutched #{@clutch.date_clutched}" %>
+
+<center>
+<p>
+  <strong>Dame:</strong>
+  <%= "#{@clutch.dame_color} #{@clutch.dame}" %>
+</p>
+
+<p>
+  <strong>Sire:</strong>
+  <%= "#{@clutch.sire_color} #{@clutch.sire}" %>
+</p>
+
+<p>
+  <strong>Date clutched:</strong>
+  <%= @clutch.date_clutched %>
+</p>
+
+<p>
+  <strong>Date hatched:</strong>
+  <%= @clutch.date_hatched %>
+</p>
+
+<p>
+  <strong>Clutch Theme:</strong>
+  <%= @clutch.theme %>
+</p>
+
+</center>
+
+<br>
+
+<center>
+  <p>
+    <% if signed_in? %>
+      <% if is_admin? || is_current_user?(@clutch.user) %>
+
+        |<%= link_to "Edit", edit_clutch_path(@clutch) %> |
+        <%= link_to "Add an Egg" %> |
+        <%= link_to "Back to All Clutches", clutches_path %> | 
+      <% end %>
+    <% end %>
+  </p>
+</center>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  dame: MyString
+  sire: MyString
+  date_clutched: 2014-05-17
+  date_hatched: 2014-05-17
+  userid: 1
+
+two:
+  dame: MyString
+  sire: MyString
+  date_clutched: 2014-05-17
+  date_hatched: 2014-05-17
+  userid: 1

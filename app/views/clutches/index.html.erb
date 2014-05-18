@@ -1,0 +1,23 @@
+<% title "Hatching Sands"%>
+
+<p>Welcome to our hatching sands! Here you can find out about the clutches of Exile, past and present. Want to add a clutch of your own? Go ahead and click the "New Clutch" link below to fill out the form. So long as it is approved by the BoD, your clutch will show up within a few days.</p>
+
+<% @clutches.group_by(&:creature_type).each do |type, clutches| %>
+<table>
+  <h2><%= type %></h2>
+  <tbody>
+    <% clutches.each do |clutch| %>
+      <tr>
+        <td class="title"><%= link_to clutch.dame, clutch %></td>
+        <td class="last_updated"><%= "Clutched: #{clutch.date_clutched}" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>
+<br>
+
+<% if signed_in? %>
+  <%= link_to 'New Clutch', new_clutch_path %>
+<% end %>
+

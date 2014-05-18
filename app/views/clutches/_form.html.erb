@@ -1,0 +1,49 @@
+<%= form_for(@clutch) do |f| %>
+  <% if @clutch.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@clutch.errors.count, "error") %> prohibited this clutch from being saved:</h2>
+
+      <ul>
+      <% @clutch.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :dame %><br>
+    <%= f.text_field :dame %>
+  </div>
+  <div class="field">
+    <%= f.label "Dame's Color" %><br>
+    <%= f.select :dame_color, ['Gold', 'Green'] %>
+  </div>
+  <div class="field">
+    <%= f.label :sire %><br>
+    <%= f.text_field :sire %>
+  </div>
+  <div class="field">
+    <%= f.label "Sire's Color" %><br>
+    <%= f.select :sire_color, ['Bronze', 'Silver', 'Brown', 'Blue'] %>
+  </div>
+  <div class="field">
+    <%= f.label "Type" %><br>
+    <%= f.select :creature_type, ['Dragon', 'Firelizard', 'Wher', 'Other'] %>
+  </div>
+  <div class="field">
+    <%= f.label "Clutched" %><br>
+    <%= f.date_field :date_clutched %>
+  </div>
+  <div class="field">
+    <%= f.label "Hatched" %><br>
+    <%= f.date_field :date_hatched %>
+  </div>
+  <div class="field">
+    <%= f.label :theme %><br>
+    <%= f.text_field :theme %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
