@@ -21,10 +21,20 @@
   <%= @clutch.date_hatched %>
 </p>
 
-<p>
-  <strong>Clutch Theme:</strong>
-  <%= @clutch.theme %>
-</p>
+  <% if @clutch.date_hatched < (Time.now - 1.day) %>
+    <p>
+      <strong>Clutch Theme:</strong>
+      <%= @clutch.theme %>
+    </p>
+    
+  <% elsif signed_in?%>
+    <% if is_admin? || is_current_user?(@clutch.user) %>
+      <p>
+        <strong>Clutch Theme:</strong>
+        <%= @clutch.theme %>
+      </p>
+    <% end %>
+  <% end %>
 
 </center>
 
