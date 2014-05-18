@@ -7,7 +7,7 @@ module CheckUser
   
   # Check for authorized user
   def correct_user
-    @user ||= @character.user
+    @user ||= (@character ? @character.user : @clutch.user)
     redirect_to user_path(current_user), alert: "That does not belong to you!" unless is_current_user?(@user) || is_admin?
   end
   

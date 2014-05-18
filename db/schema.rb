@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140109030402) do
+ActiveRecord::Schema.define(version: 20140518024737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,23 @@ ActiveRecord::Schema.define(version: 20140109030402) do
   end
 
   add_index "characters", ["user_id"], name: "index_characters_on_user_id", using: :btree
+
+  create_table "clutches", force: true do |t|
+    t.string   "dame"
+    t.string   "sire"
+    t.date     "date_clutched"
+    t.date     "date_hatched"
+    t.string   "theme"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "approved",      default: false
+    t.string   "creature_type"
+    t.string   "dame_color"
+    t.string   "sire_color"
+  end
+
+  add_index "clutches", ["user_id"], name: "index_clutches_on_user_id", using: :btree
 
   create_table "dragons", force: true do |t|
     t.integer  "rider_id"

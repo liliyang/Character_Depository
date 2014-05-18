@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   after_create :registration_notification
   
   has_many :characters, dependent: :destroy
+  has_many :clutches
   
   validates :name, presence: true
   validates :age, presence: true, numericality: { greater_than_or_equal_to: 16 }

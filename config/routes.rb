@@ -1,5 +1,7 @@
 HelloWorld::Application.routes.draw do
 
+  resources :clutches
+
   match 'characters/:character_id/relationships/edit' => 'relationships#edit', :as => 'edit_character_relationships', via: :get
     
   resources :characters do
