@@ -1,5 +1,5 @@
 class ClutchesController < ApplicationController
-  before_action :set_clutch, only: [:show, :edit, :update, :destroy]
+  before_action :set_clutch, only: [:show, :edit, :update, :destroy, :approve_clutch]
   before_action :signed_in_user, only: [:new, :create, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :admin_user, only: [:approve_clutch, :start_hatching]
@@ -55,7 +55,12 @@ class ClutchesController < ApplicationController
 
   # Allows admit to approve a clutch before it becomes visible on site
   def approve_clutch
-
+    @clutch.approved = !@clutch.approved
+    if @clutch.save
+      redirect_to users_path
+    else
+      redirect_to users_path, alert: "Error! Failed to Approve!"
+    end
   end
   
   # Hatching code

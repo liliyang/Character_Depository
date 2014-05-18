@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @characters = Character.where(approved: false).order("updated_at ASC").includes(:dragon)
+    @clutches = Clutch.where(approved: false).order("updated_at ASC")
   end
 
   # GET /users/1

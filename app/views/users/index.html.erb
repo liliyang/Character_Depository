@@ -69,6 +69,45 @@
     </tbody>
   </table>
 
+  <br><hr>
+
+  <h2>Clutches Pending Approval</h2>
+
+  <hr>
+
+  <table class="char_table">
+    <thead>
+      <tr>
+        <th>Dame</th>
+        <th>Dame's Color</th>
+        <th>Type</th>
+        <th>Sire</th>
+        <th>Sire's Color</th>
+        <th>Clutched</th>
+        <th>Hatched</th>
+        <th>Approve</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @clutches.each do |clutch| %>
+        <tr>
+          <td id="char_data"><%= link_to clutch.dame, clutch %></td>
+          <td id="char_data"><%= clutch.dame_color %></td>
+          <td id="char_data"><%= clutch.creature_type %></td>
+          <td id="char_data"><%= clutch.sire %></td>
+          <td id="char_data"><%= clutch.sire_color %></td>
+          <td id="char_data"><%= clutch.date_clutched %></td>
+          <td id="char_data"><%= clutch.date_hatched %></td>
+          <td id="char_option"><%= link_to "Approve", approve_clutch_path(clutch) %></td>
+          <td id="char_option"><%= link_to 'Edit', edit_clutch_path(clutch) %></td>
+          <td id="char_option"><%= link_to 'Delete', clutch, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <div>
 
 <br><hr>

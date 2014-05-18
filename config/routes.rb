@@ -26,6 +26,8 @@ HelloWorld::Application.routes.draw do
   match 'approve_character/:id' => 'characters#approve_character', :as => 'approve_character', via: [:get, :put]
   match 'characters/:id/upload_picture' => 'characters#upload_picture', :as => 'upload_picture', via: [:get, :post]
   
+  match 'approve_clutch/:id' => 'clutches#approve_clutch', :as => 'approve_clutch', via: [:get, :put]
+  
   match 'signup' => 'users#new', via: :get
   match 'signin' => 'sessions#new', via: :get
   match 'signout' => 'sessions#destroy', via: :delete
