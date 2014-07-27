@@ -46,7 +46,7 @@
     <%= egg.name %> 
     <% if signed_in? %>
       <% if is_admin? || is_current_user?(@clutch.user) %>
-      <small>( <%= link_to 'Edit', edit_clutch_egg_path(@clutch, egg) %> )</small>
+      <small>( <%= link_to 'Edit', edit_clutch_egg_path(@clutch, egg) %> | <%= link_to 'Delete', clutch_egg_path(@clutch, egg), method: :delete, data: { confirm: 'Are you sure?' } %> )</small>
       <% end %>
     <% end %>
   </h2>
@@ -74,9 +74,12 @@
       <% if is_admin? || is_current_user?(@clutch.user) %>
 
         |<%= link_to "Edit", edit_clutch_path(@clutch) %> |
-        <%= link_to "Add an Egg", new_clutch_egg_path(@clutch) %> |
-        <%= link_to "Back to All Clutches", clutches_path %> | 
+        <%= link_to "Add an Egg", new_clutch_egg_path(@clutch) %>
       <% end %>
     <% end %>
+    <% if @clutch.creature_type == "Dragon" %>
+      |<%= link_to "Hatching Posts", clutch_posts_path(@clutch) %> 
+    <% end %>
+    |<%= link_to "Back to All Clutches", clutches_path %> |
   </p>
 </center>

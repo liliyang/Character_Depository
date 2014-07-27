@@ -1,6 +1,9 @@
 HelloWorld::Application.routes.draw do
 
+  
+
   resources :clutches do
+    resources :posts
     resources :eggs
   end
 

@@ -1,0 +1,74 @@
+<%= title "#{@clutch.dame}'s Clutch, Clutched #{@clutch.date_clutched}" %>
+
+<center>
+<p>
+  <strong>Dame:</strong>
+  <%= "#{@clutch.dame_color} #{@clutch.dame}" %>
+</p>
+
+<p>
+  <strong>Sire:</strong>
+  <%= "#{@clutch.sire_color} #{@clutch.sire}" %>
+</p>
+
+<p>
+  <strong>Date clutched:</strong>
+  <%= @clutch.date_clutched %>
+</p>
+
+<p>
+  <strong>Date hatched:</strong>
+  <%= @clutch.date_hatched %>
+</p>
+
+  <% if @clutch.date_hatched < (Time.now - 1.day) %>
+    <p>
+      <strong>Clutch Theme:</strong>
+      <%= @clutch.theme %>
+    </p>
+    
+  <% elsif signed_in?%>
+    <% if is_admin? || is_current_user?(@clutch.user) %>
+      <p>
+        <strong>Clutch Theme:</strong>
+        <%= @clutch.theme %>
+      </p>
+    <% end %>
+  <% end %>
+
+</center>
+<h2>Hatching Posts</h2>
+<% if signed_in? %>
+  <% @posts.each do |post| %>
+    <% if is_admin? || post.reveal %>
+      <h2>
+        <%= post.title %>
+        <% if signed_in? %>
+          <% if is_admin? || is_current_user?(@clutch.user) %>
+          <small>( <%= link_to 'Edit', edit_clutch_post_path(@clutch, post) %> | <%= link_to 'Delete', clutch_post_path(@clutch, post), method: :delete, data: { confirm: 'Are you sure?' } %> )</small>
+          <% end %>
+        <% end %>
+      </h2>
+
+      <p>
+        <%= simple_format(post.post_body) %>
+      </p>
+    <% end %>
+  <% end %>
+<% else %>
+<center>
+  <p>This content is only available for registered users. Please sign in or  sign up (link above) to view this content. Thanks!</p>
+</center>  
+<% end %>
+
+<center>
+  <p>
+    <% if signed_in? %>
+      <% if is_admin? || is_current_user?(@clutch.user) %>
+        |<%= link_to 'New Hatching Post', new_clutch_post_path %>
+      <% end %>
+    <% end %>
+    |<%= link_to "Back to Egg Descriptions", @clutch %> |
+    <%= link_to "Back to All Clutches", clutches_path %> |
+  </p>
+</center>
