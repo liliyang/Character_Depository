@@ -36,7 +36,7 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
-    if @post.update(egg_params)
+    if @post.update(post_params)
       redirect_to redirect_to clutch_posts_path(@clutch), notice: 'Hatching post was successfully updated.'
     else
       render action: 'edit'
