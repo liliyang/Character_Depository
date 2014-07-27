@@ -56,3 +56,6 @@ gem 'figaro'
 
 # To use with Amazon Storage
 gem 'aws-s3'
+
+# Delayed_job allows methods to run asynchronously in the background.
+gem 'delayed_job_active_record'

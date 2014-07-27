@@ -36,6 +36,12 @@
     <% end %>
   <% end %>
 
+<%if signed_in? && is_admin? %>
+  <p>
+    <%= link_to "Start Hatching", start_hatching_path(@clutch) %>
+  </p>
+<% end %>
+
 </center>
 <h2>Hatching Posts</h2>
 <% if signed_in? %>

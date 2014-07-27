@@ -1,5 +1,5 @@
 class ClutchesController < ApplicationController
-  before_action :set_clutch, only: [:show, :edit, :update, :destroy, :approve_clutch]
+  before_action :set_clutch, only: [:show, :edit, :update, :destroy, :approve_clutch, :start_hatching]
   before_action :signed_in_user, only: [:new, :create, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :admin_user, only: [:approve_clutch, :start_hatching]
@@ -65,7 +65,13 @@ class ClutchesController < ApplicationController
   
   # Hatching code
   def start_hatching
-    
+    @count = 0
+    @posts = @clutch.posts
+    @posts.each do |post|
+      @count = @count + 5
+      UserMailer.delay(run_at: @count.minutes.from_now).hatching_posts(post)
+    end
+    redirect_to clutch_posts_path(@clutch), notice: 'Hatching Started'
   end
 
   private

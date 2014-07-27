@@ -23,4 +23,9 @@ class UserMailer < ActionMailer::Base
     @user = character.user
     mail to: @user.email, subject: "Your New Character #{@character.name} Has Been Approved!"
   end
+  
+  def hatching_posts(post)
+    @post = post
+    mail to: "mglady3@gmail.com", subject: @post.title
+  end
 end

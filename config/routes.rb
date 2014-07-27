@@ -32,6 +32,7 @@ HelloWorld::Application.routes.draw do
   match 'characters/:id/upload_picture' => 'characters#upload_picture', :as => 'upload_picture', via: [:get, :post]
   
   match 'approve_clutch/:id' => 'clutches#approve_clutch', :as => 'approve_clutch', via: [:get, :put]
+  match 'start_hatching/:id' => 'clutches#start_hatching', :as => 'start_hatching', via: [:get, :put]
   
   match 'signup' => 'users#new', via: :get
   match 'signin' => 'sessions#new', via: :get
