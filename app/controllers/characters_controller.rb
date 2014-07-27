@@ -108,7 +108,7 @@ class CharactersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def character_params
-      params.require(:character).permit(:name, :pronunciation, :age, :character_type, :rank, :gender, :preference, :location, :description, :personality, :history, :abilities, :dragon_preference, :dragon_names, :craft, :craft_rank, :craft_specialty, :craft_abilities, :hold, :hold_size)
+      params.require(:character).permit(:category, :name, :pronunciation, :age, :character_type, :rank, :gender, :preference, :location, :description, :personality, :history, :abilities, :dragon_preference, :dragon_names, :craft, :craft_rank, :craft_specialty, :craft_abilities, :hold, :hold_size)
     end
     
     def upload!

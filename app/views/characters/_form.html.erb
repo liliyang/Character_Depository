@@ -15,6 +15,10 @@
 <strong>Character Information:</strong><br><br>
 
 <div class="field">
+  <%= f.label(:category, "PC/NPC") %><br>
+  <%= f.select :category, ["Primary", "Secondary", "NPC/TANPC"] %>
+</div>
+<div class="field">
   <%= f.label :name %><br>
   <%= f.text_field :name %>
 </div>
@@ -27,7 +31,7 @@
   <%= f.number_field :age %>
 </div>
 <div class="field">
-  <%= f.label :character_type %><br>
+  <%= f.label(:character_type, "Character Type") %><br>
   <%= f.select :character_type, ['Candidate', 'Crafter', 'Dragonrider', 'Holder', 'Weyrling', 'Other'] %>
 </div>
 <div class="field">
@@ -39,7 +43,7 @@
   <%= f.select :gender, ['Male', 'Female'] %>
 </div>
 <div class="field">
-  <%= f.label "Sexual Preference" %><br>
+  <%= f.label(:preference, "Sexual Preference") %><br>
   <%= f.select :preference, ['Asexual', 'Bisexual', 'Heterosexual', 'Homosexual', 'Unsure'] %>
 </div>
 <div class="field">
@@ -59,18 +63,18 @@
   <%= f.text_area :history %>
 </div>
 <div class="field">
-  <%= f.label "Abilities/Strengths/Weaknesses" %><br>
+  <%= f.label(:abilities, "Abilities/Strengths/Weaknesses") %><br>
   <%= f.text_area :abilities %>
 </div>
 
 <hr>
 <strong>Candidate Information:</strong> (Only fill in this if you wish your character to be considered for impression.)<br><br>
 <div class="field">
-  <%= f.label "Dragon Color Preferences"%><br>
+  <%= f.label(:dragon_preference, "Dragon Color Preferences")%><br>
   <%= f.text_field :dragon_preference %>
 </div>
 <div class="field">
-  <%= f.label "Dragon Names"%><br>
+  <%= f.label(:dragon_names, "Dragon Names")%><br>
   <%= f.text_field :dragon_names %>
 </div>
 
@@ -81,7 +85,7 @@
   <%= f.select :craft, ['Artist', 'Baker', 'Beastcraft', 'Chemist', 'Cobbler', 'Dolphineer', 'DragonHealer', 'Farmer', 'Fisher', 'Glasscrafter', 'Harper', 'Healer', 'Miner', 'Pirate', 'Runner', 'Sailor', 'Seacrafter', 'Smith', 'Tailor', 'Tanner', 'Vinter', 'Weaver', 'Woodcraft', 'Whercraft', 'Other'], include_blank: true %>
 </div>
 <div class="field">
-  <%= f.label "Craft Rank"%><br>
+  <%= f.label(:craft_rank, "Craft Rank")%><br>
   <%= f.select :craft_rank, ['Apprentice', 'Sr. Apprentice', 'Journeyman', 'Sr. Journeyman', 'Master', 'Craft Master'] %>
 </div>
 <div class="field">
@@ -89,7 +93,7 @@
   <%= f.text_field :craft_specialty %>
 </div>
 <div class="field">
-  <%= f.label "Strength/Weaknesses"%><br>
+  <%= f.label(:craft_abilities, "Strength/Weaknesses")%><br>
   <%= f.text_area :craft_abilities %>
 </div>
 

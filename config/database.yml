@@ -22,11 +22,3 @@ test:
   username: yangl369
   password:
 
-
-production:
-  adapter: postgresql
-  encoding: utf8
-  database: cp_production
-  pool: 5
-  username: yangl369
-  password:

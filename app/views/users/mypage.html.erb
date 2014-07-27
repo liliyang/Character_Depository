@@ -31,6 +31,7 @@
         <th>Rank</th>
         <th>Dragon</th>
         <th>Color</th>
+        <th>PC/NPC</th>
         <th>Status</th>
         <th>Active</th>
         <th>Delete</th>
@@ -47,6 +48,7 @@
           <td id="char_data"><%= character.rank %></td>
           <td id="char_data"><%= character.dragon.name if character.dragon %></td>
           <td id="char_data"><%= character.dragon.color if character.dragon %></td>
+          <td id="char_data"><%= character.category %></td>
           <td id="char_data">
             <% if character.active %>
               <%= character.approved ? "Approved" : "Approval Pending" %>

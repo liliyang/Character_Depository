@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140518031937) do
+ActiveRecord::Schema.define(version: 20140727032001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20140518031937) do
     t.text     "craft_abilities"
     t.string   "hold"
     t.string   "hold_size"
+    t.string   "category"
   end
 
   add_index "characters", ["user_id"], name: "index_characters_on_user_id", using: :btree
