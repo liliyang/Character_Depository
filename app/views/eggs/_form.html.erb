@@ -49,7 +49,7 @@
   <% if @clutch.creature_type == "Dragon" %>
   <div class="field">
     <%= f.label(:post_id, "Assign to Hatching Post")%><br>
-    <%= f.collection_select(:post, @clutch.posts, :id, :title) %>
+    <%= f.collection_select(:post_id, @clutch.posts, :id, :title) %>
   </div>
   <% end %>
   <div class="actions">
