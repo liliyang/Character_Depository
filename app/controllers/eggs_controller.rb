@@ -53,6 +53,6 @@ class EggsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def egg_params
-      params.require(:egg).permit(:name, :description, :creature_color, :creature_appearance, :creature_personality, :character, :inspiration)
+      params.require(:egg).permit(:name, :description, :creature_name, :creature_color, :creature_appearance, :creature_personality, :character, :inspiration, :post_id)
     end
 end

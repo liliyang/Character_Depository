@@ -18,6 +18,7 @@ class Character < ActiveRecord::Base
   scope :recent, ->{ where("created_at > ?", 2.weeks.ago) }
   scope :updated, ->{ where("updated_at > ?", 2.weeks.ago) }
   scope :display, ->{ where(approved: true, active: true) }
+  scope :non_rider, ->{ where.not(character_type: "Dragonrider") }
   
   def has_dragon?
     if self.dragon

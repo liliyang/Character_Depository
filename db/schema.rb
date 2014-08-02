@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140727203934) do
+ActiveRecord::Schema.define(version: 20140802175404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,9 +120,12 @@ ActiveRecord::Schema.define(version: 20140727203934) do
     t.integer  "clutch_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "post_id"
+    t.string   "creature_name"
   end
 
   add_index "eggs", ["clutch_id"], name: "index_eggs_on_clutch_id", using: :btree
+  add_index "eggs", ["post_id"], name: "index_eggs_on_post_id", using: :btree
 
   create_table "pets", force: true do |t|
     t.integer  "character_id"

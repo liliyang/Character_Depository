@@ -19,9 +19,15 @@
     <%= f.label "Egg Description" %><br>
     <%= f.text_area :description %>
   </div>
+  <% if @clutch.creature_type == "Dragon" %>
+  <div class="field">
+    <%= f.label(:creature_name, "Dragon Name") %><br>
+    <%= f.text_field :creature_name %>
+  </div>
+  <% end %>
   <div class="field">
     <%= f.label "Color" %><br>
-    <%= f.select :creature_color, ['Gold', 'Bronze', 'Silver', 'Black', 'Brown', 'Blue', 'Green'] %>
+    <%= f.select :creature_color, ['Gold', 'Bronze', 'Silver', 'Black', 'Brown', 'Blue', 'Green', 'Other'] %>
   </div>
   <div class="field">
     <%= f.label "Appearance" %><br>
@@ -37,8 +43,15 @@
   </div>
   <div class="field">
     <%= f.label "Impressed to" %><br>
-    <%= f.text_field :character %>
+    <%= f.collection_select(:character, Character.all, :name, :name)%>
+    <%#= f.text_field :character %>
   </div>
+  <% if @clutch.creature_type == "Dragon" %>
+  <div class="field">
+    <%= f.label(:post_id, "Assign to Hatching Post")%><br>
+    <%= f.collection_select(:post, @clutch.posts, :id, :title) %>
+  </div>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>

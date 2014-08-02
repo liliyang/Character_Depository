@@ -1,5 +1,12 @@
     <h2>About the <%= @clutch.creature_type %></h2>
-  
+    
+    <% if @clutch.creature_type == "Dragon" %>
+    <p>
+      <strong>Name:</strong>
+      <%= egg.creature_name %>
+    </p>
+    <% end %>
+    
     <p>
       <strong>Color:</strong>
       <%= egg.creature_color %>
