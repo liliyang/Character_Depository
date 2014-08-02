@@ -1,1 +1,19 @@
-<%= simple_format(@post.post_body) %>
+<p><%= simple_format(@post.post_body) %><p/>
+  
+<% @post.eggs.each do |egg| %>
+  <u><strong><%= egg.name %></strong></u>
+  <p>  
+    <%= simple_format(egg.description) %>
+  </p>  
+  <p>
+    <i><%= "#{egg.creature_color}, #{egg.creature_name}, Impressed to #{egg.character}" %></i>
+  </p>
+  <p>
+    <%= simple_format(egg.creature_appearance) %>
+  </p>
+
+  <p>
+    <%= simple_format(egg.creature_personality) %>
+  </p>
+
+<% end %>
