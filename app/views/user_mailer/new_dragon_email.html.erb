@@ -1,20 +1,20 @@
 <p>
-  <%= "Congratulations on #{@egg.character}'s impression to #{@egg.creature_color} #{egg.creature_name}!"%>
+  <%= "Congratulations on #{@egg.character}'s impression to #{@egg.creature_color} #{@egg.creature_name}!"%>
 </p>
 
-  <u><strong><%= egg.name %></strong></u>
+  <u><strong><%= @egg.name %></strong></u>
   <p>  
-    <%= simple_format(egg.description) %>
+    <%= simple_format(@egg.description) %>
   </p>  
   <p>
-    <b><%= egg.creature_name%> </b>
+    <b><%= @egg.creature_name%> </b>
   </p>
   <p>
-    <%= simple_format(egg.creature_appearance) %>
+    <%= simple_format(@egg.creature_appearance) %>
   </p>
 
   <p>
-    <%= simple_format(egg.creature_personality) %>
+    <%= simple_format(@egg.creature_personality) %>
   </p>
   
   <p>

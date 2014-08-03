@@ -70,10 +70,12 @@ class ClutchesController < ApplicationController
     @posts.each do |post|
       @count = @count + 5
       UserMailer.delay(run_at: @count.minutes.from_now).hatching_posts(post)
+      post.delay(run_at: @count.minutes.from_now).show_post
       @count = @count + 5
       post.eggs.each do |egg|
         @character = Character.find_by(name: egg.character)
         UserMailer.delay(run_at: @count.minutes.from_now).new_dragon_email(egg, @character.user)
+        @character.delay(run_at: @count.minutes.from_now).impress_to(egg)
       end
     end
     redirect_to clutch_posts_path(@clutch), notice: 'Hatching Started'

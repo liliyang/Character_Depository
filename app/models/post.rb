@@ -3,4 +3,9 @@ class Post < ActiveRecord::Base
   has_many :eggs
   
   default_scope { order("id ASC")}
+  
+  def show_post
+    self.reveal = true
+    self.save
+  end
 end

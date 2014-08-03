@@ -32,4 +32,10 @@ class Character < ActiveRecord::Base
     "#{self.name}"
   end
   
+  def impress_to(egg)
+    unless self.dragon
+      self.create_dragon({name: egg.creature_name, color: egg.creature_color, age: 0, description: egg.creature_appearance, personality: egg.creature_personality})
+    end
+  end
+  
 end

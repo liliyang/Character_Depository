@@ -37,9 +37,11 @@
   <% end %>
 
 <%if signed_in? && is_admin? %>
-  <p>
-    <%= link_to "Start Hatching", start_hatching_path(@clutch) %>
-  </p>
+  <% unless @posts.last.reveal %>
+    <p>
+      <%= link_to "Start Hatching", start_hatching_path(@clutch) %>
+    </p>
+  <% end %>
 <% end %>
 
 </center>
