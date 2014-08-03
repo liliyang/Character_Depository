@@ -26,12 +26,12 @@ class UserMailer < ActionMailer::Base
   
   def hatching_posts(post)
     @post = post
-    mail to: "mglady3@gmail.com", subject: @post.title
+    mail to: "exile-weyr@googlegroups.com", subject: @post.title
   end
   
   def new_dragon_email(egg, user)
     @egg = egg
     @user = user
-    mail to: "mglady3@gmail.com", subject: "Impression - #{@egg.creature_name}"
+    mail to: @user.email , subject: "Impression - #{@egg.creature_name}"
   end
 end
