@@ -30,7 +30,7 @@ class UserMailer < ActionMailer::Base
   end
   
   def new_dragon_email(egg, user)
-    @post = egg
+    @egg = egg
     @user = user
     mail to: "mglady3@gmail.com", subject: "Impression - #{@egg.creature_name}"
   end
