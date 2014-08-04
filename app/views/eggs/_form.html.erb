@@ -43,13 +43,13 @@
   </div>
   <div class="field">
     <%= f.label "Impressed to" %><br>
-    <%= f.collection_select(:character, Character.all, :name, :name)%>
+    <%= f.collection_select(:character, Character.all, :name, :name, :include_blank => true)%>
     <%#= f.text_field :character %>
   </div>
   <% if @clutch.creature_type == "Dragon" %>
   <div class="field">
     <%= f.label(:post_id, "Assign to Hatching Post")%><br>
-    <%= f.collection_select(:post_id, @clutch.posts, :id, :title) %>
+    <%= f.collection_select(:post_id, @clutch.posts, :id, :title, :include_blank => true) %>
   </div>
   <% end %>
   <div class="actions">
