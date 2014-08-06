@@ -35,6 +35,9 @@ class Character < ActiveRecord::Base
   def impress_to(egg)
     unless self.dragon
       self.create_dragon({name: egg.creature_name, color: egg.creature_color, age: 0, description: egg.creature_appearance, personality: egg.creature_personality})
+      self.character_type = "Weyrling"
+      self.rank = "Weyrling"
+      self.save
     end
   end
   
