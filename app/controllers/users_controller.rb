@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   
   before_action :set_user, only: [:show, :edit, :update, :destroy, :set_password]
-  # before_action :signed_in_user, only: [:index, :show, :edit, :update, :destroy, :set_password]
-  # before_action :correct_user, only: [:edit, :update, :destroy, :set_password]
+  before_action :signed_in_user, only: [:index, :show, :edit, :update, :destroy, :set_password]
+  before_action :correct_user, only: [:edit, :update, :destroy, :set_password]
   before_action :admin_user, only: [:index]
   before_action :check_update_password, only: [:update]
 
@@ -69,7 +69,7 @@ class UsersController < ApplicationController
   
   def set_password
     unless session[:authenticated]
-      # redirect_to authenticate_path
+      redirect_to authenticate_path
     end
     session[:authenticated] = nil
   end
