@@ -10,13 +10,19 @@
   <%= link_to "Riders", :character_type => "Dragonrider" %>,
   <%= link_to "Weyrlings", :character_type => "Weyrling" %>, 
   <%= link_to "Others", :character_type => "Other" %>
-  
+</p>
+
+<p>
+  Alternatively, click here to see the wing list:
+  <%= link_to "Wings", :character_type => "Wings" %>
 </p>
 
 <hr>
 
 <% if params[:character_type] == "Dragonrider" %>
   <%= render "dragonriders" %>
+<% elsif params[:character_type] == "Wings" %>
+  <%= render "wings" %>
 <% else %>
   <%= render "list" %>
 <% end %>

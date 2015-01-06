@@ -10,7 +10,9 @@ class CharactersController < ApplicationController
   # GET /characters
   # GET /characters.json
   def index
-    if params[:character_type]
+    if params[:character_type] == "Wings"
+      @characters = Character.display.where(character_type: "Dragonrider").order(sort_column + " " + sort_direction).includes(:dragon)
+    elsif params[:character_type]
       @characters = Character.display.where(character_type: params[:character_type]).order(sort_column + " " + sort_direction).includes(:dragon)
     else
       @characters = Character.display.order(sort_column + " " + sort_direction).includes(:dragon)

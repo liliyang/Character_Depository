@@ -1,0 +1,38 @@
+<% @dragonriders = @characters %>
+
+<% ["Gold", "Bronze", "Silver", "Brown", "Blue", "Green"].each do |color| %>
+  <h2><%= color %></h2>
+  <table class="char_table">
+    <thead>
+      <tr>
+        <th><%= sortable "name" %></th>
+        <th><%= sortable "gender" %></th>
+        <th><%= sortable "character_type", "Character Type" %></th>
+        <th><%= sortable "craft" %></th>
+        <th><%= sortable "rank" %></th>
+        <th>Dragon</th>
+        <th>Color</th>
+        <th>Owner</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @characters.each do |character| %>
+        <% if character.dragon && character.dragon.color == color %>
+          <tr>
+            <td class="char_data", id="name"><%= link_to character.name, character %></td>
+            <td class="char_data", id="gender"><%= character.gender %></td>
+            <td class="char_data", id="type"><%= link_to character.character_type, character_type_path(character.character_type) %></td>
+            <td class="char_data", id="craft"><%= character.craft %></td>
+            <td class="char_data", id="rank"><%= character.rank %></td>
+            <td class="char_data", id="dragon_name"><%= character.dragon.name if character.dragon %></td>
+            <td class="char_data", id="dragon_color"><%= character.dragon.color if character.dragon %></td>
+            <td class="char_data", id="user"><%= link_to character.user.username, user_path(character.user.username) %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <hr>
+<% end %>
