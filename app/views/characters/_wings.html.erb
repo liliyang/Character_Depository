@@ -1,7 +1,7 @@
 <% @dragonriders = @characters %>
 
-<% ["Gold", "Bronze", "Silver", "Brown", "Blue", "Green"].each do |color| %>
-  <h2><%= color %></h2>
+<% ["Queen's Wing", "High Altitude Wing", "Mid Altitude Wing", "Low Altitude Wing", "Weyrling Wing"].each do |wing| %>
+  <h2><%= wing %></h2>
   <table class="char_table">
     <thead>
       <tr>
@@ -18,7 +18,7 @@
 
     <tbody>
       <% @characters.each do |character| %>
-        <% if character.dragon && character.dragon.color == color %>
+        <% if character.dragon && character.dragon.wing == wing %>
           <tr>
             <td class="char_data", id="name"><%= link_to character.name, character %></td>
             <td class="char_data", id="gender"><%= character.gender %></td>
