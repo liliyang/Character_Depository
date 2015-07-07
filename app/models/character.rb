@@ -5,8 +5,8 @@ class Character < ActiveRecord::Base
   has_many :pets
   has_one :dragon, dependent: :destroy, foreign_key: :rider_id
   
-  has_many :relationships
-  has_many :relatives, through: :friendships
+  has_many :relationships, dependent: :destroy
+  has_many :relatives, through: :friendships, dependent: :destroy
   has_many :inverse_relationships, :class_name => "Relationship", foreign_key: :relative_id
   has_many :inverse_friends, through: :inverse_relationships, source: :character
   
